@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var lgrab: RayCast2D = $Lgrab
+@onready var check_up: RayCast2D = $Lgrab/CheckUp
+
+@export var accel: float = 0.04
 @export var speed: float = 600.0
 @export var jump_velocity: float = -1100.0
 @export var jump_cutoff: float = -300.0
@@ -11,6 +15,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var attack_cool_len: int = 120
 @export var attack_len: int = 60
 
+var direction = 0
 var attack_cool: int = -1
 var is_jumping: bool = false
 var coyote_timer: float = 0.0
@@ -21,8 +26,12 @@ var running = false
 var knock_back = false
 var idle = true
 var inAri = false
+var hanging = false
+var can_move = true
 
 func _physics_process(delta: float) -> void:
+	print(direction)
+	is_hanging()
 	handle_timers(delta)
 	move_character(delta)
 	animations_test()
@@ -30,24 +39,42 @@ func _physics_process(delta: float) -> void:
 	hit_box()
 	move_and_slide()
 
+func is_hanging():
+	if lgrab.is_colliding() and !hanging:
+		if lgrab.get_collider().name == "temp":
+			if !check_up.is_colliding():
+				hanging = true
+				var grab_position_x = lgrab.get_collision_point().x - 30
+				var grab_position_y = lgrab.get_collision_point().y + 30
+				self.position = Vector2(grab_position_x,grab_position_y)
+				velocity = Vector2.ZERO
+	if hanging and direction != 0:
+		await get_tree().create_tween().tween_interval(1)
+		hanging = false
+
+
+
 func move_character(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta * 2.1
-	else:
-		is_jumping = false
-		coyote_timer = coyote_time
-		jumps_done = 0
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction != 0:
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed / 5)
-	if Input.is_action_just_pressed("ui_accept"):
-		jump_buffer_timer = jump_buffer_time
-	if jump_buffer_timer > 0 and can_jump():
-		start_jump()
-	if Input.is_action_just_released("ui_accept") and is_jumping and velocity.y < jump_cutoff:
-		velocity.y = jump_cutoff
+		direction = Input.get_axis("ui_left", "ui_right")
+		if not is_on_floor() and !hanging:
+			velocity.y += gravity * delta * 2.1
+			accel = 0.02
+		else:
+			is_jumping = false
+			coyote_timer = coyote_time
+			jumps_done = 0
+			accel = 0.04
+		if direction != 0 and !hanging:
+			if abs(velocity.x) < speed:
+				velocity.x += direction * speed * accel
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed / 50)
+		if Input.is_action_just_pressed("ui_accept"):
+			jump_buffer_timer = jump_buffer_time
+		if jump_buffer_timer > 0 and can_jump():
+			start_jump()
+		if Input.is_action_just_released("ui_accept") and is_jumping and velocity.y < jump_cutoff:
+			velocity.y = jump_cutoff
 
 func can_jump() -> bool:
 	if is_on_floor() or coyote_timer > 0:
@@ -95,6 +122,8 @@ func animations():
 		$AnimationPlayer.play("attack")
 	elif running:
 		$AnimationPlayer.play("Run")
+	elif hanging:
+		$AnimationPlayer.play("hanging")
 	elif idle:
 		$AnimationPlayer.play("idle")
 

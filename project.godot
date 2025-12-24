@@ -12,12 +12,11 @@ config_version=5
 
 config/name="zavrsni"
 run/main_scene="res://temp/temp_map.tscn"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://temp/icon.svg"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]
