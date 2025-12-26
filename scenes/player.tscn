@@ -257,10 +257,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2]
 }
 
-[sub_resource type="Animation" id="Animation_d72yr"]
-resource_name = "idle"
-step = 0.06
-
 [sub_resource type="Animation" id="Animation_y4r1p"]
 resource_name = "hanging"
 tracks/0/type = "value"
@@ -311,6 +307,10 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+
+[sub_resource type="Animation" id="Animation_d72yr"]
+resource_name = "idle"
+step = 0.06
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jei4c"]
 _data = {

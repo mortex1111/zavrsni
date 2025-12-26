@@ -11,6 +11,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var jump_cutoff: float = -300.0
 @export var coyote_time: float = 0.15
 @export var jump_buffer_time: float = 0.15
+@export var hang_delay: float = 0.2
 @export var max_jumps: int = 2
 @export var attack_cool_len: int = 120
 @export var attack_len: int = 60
@@ -20,6 +21,8 @@ var attack_cool: int = -1
 var is_jumping: bool = false
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
+var hang_timer1: float = 0.0
+var hang_timer2: float = 0.0
 var jumps_done: int = 0
 var attacking = false
 var running = false
@@ -30,7 +33,6 @@ var hanging = false
 var can_move = true
 
 func _physics_process(delta: float) -> void:
-	print(direction)
 	is_hanging()
 	handle_timers(delta)
 	move_character(delta)
@@ -40,22 +42,27 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func is_hanging():
-	if lgrab.is_colliding() and !hanging:
+	if lgrab.is_colliding() and !hanging and hang_timer1 <= 0.0:
 		if lgrab.get_collider().name == "temp":
 			if !check_up.is_colliding():
-				hanging = true
-				var grab_position_x = lgrab.get_collision_point().x - 30
-				var grab_position_y = lgrab.get_collision_point().y + 30
-				self.position = Vector2(grab_position_x,grab_position_y)
 				velocity = Vector2.ZERO
-	if hanging and direction != 0:
-		await get_tree().create_tween().tween_interval(1)
-		hanging = false
-
-
+				var grab_position_x = lgrab.get_collision_point().x - 41
+				var grab_position_y = lgrab.get_collision_point().y + 41
+				self.position = Vector2(grab_position_x,grab_position_y)
+				hang_timer1 = hang_delay
+				hang_timer2 = hang_delay
+				hanging = true
 
 func move_character(delta: float) -> void:
 		direction = Input.get_axis("ui_left", "ui_right")
+		
+		if hanging:
+			hang_timer2 -= delta
+		if hanging and direction != 0 and hang_timer2 <= 0.0:
+			hanging = false
+		if !hanging:
+			hang_timer1 -= delta
+			
 		if not is_on_floor() and !hanging:
 			velocity.y += gravity * delta * 2.1
 			accel = 0.02
@@ -68,10 +75,10 @@ func move_character(delta: float) -> void:
 			if abs(velocity.x) < speed:
 				velocity.x += direction * speed * accel
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed / 50)
+			velocity.x = move_toward(velocity.x, 0, speed / 30)
 		if Input.is_action_just_pressed("ui_accept"):
 			jump_buffer_timer = jump_buffer_time
-		if jump_buffer_timer > 0 and can_jump():
+		if jump_buffer_timer > 0 and can_jump() and !hanging:
 			start_jump()
 		if Input.is_action_just_released("ui_accept") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
