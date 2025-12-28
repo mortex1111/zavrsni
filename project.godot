@@ -75,6 +75,8 @@ attack={
 [layer_names]
 
 2d_physics/layer_2="attack"
+2d_physics/layer_5="obsticles(walls..)"
+2d_physics/layer_8="player"
 
 [rendering]
 

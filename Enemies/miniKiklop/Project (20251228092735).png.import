@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm42iq3iyteps"
-path="res://.godot/imported/Project (20251127063506).png-7264a8075c40e9dfff233496f4cbc917.ctex"
+uid="uid://u3i32j68w1tq"
+path="res://.godot/imported/Project (20251228092735).png-4086d2f503dddcd94696d44078e86b15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://map1/interactions/rocket/rocet boost/Project (20251127063506).png"
-dest_files=["res://.godot/imported/Project (20251127063506).png-7264a8075c40e9dfff233496f4cbc917.ctex"]
+source_file="res://Enemies/miniKiklop/Project (20251228092735).png"
+dest_files=["res://.godot/imported/Project (20251228092735).png-4086d2f503dddcd94696d44078e86b15.ctex"]
 
 [params]
 

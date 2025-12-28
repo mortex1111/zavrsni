@@ -5,7 +5,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var lgrab: RayCast2D = $Lgrab
 @onready var check_up: RayCast2D = $Lgrab/CheckUp
 
-@export var accel: float = 0.04
+@export var accel: float = 0.8
 @export var speed: float = 600.0
 @export var jump_velocity: float = -1100.0
 @export var jump_cutoff: float = -300.0
@@ -55,7 +55,6 @@ func is_hanging():
 
 func move_character(delta: float) -> void:
 		direction = Input.get_axis("ui_left", "ui_right")
-		
 		if hanging:
 			hang_timer2 -= delta
 		if hanging and direction != 0 and hang_timer2 <= 0.0:
@@ -75,7 +74,7 @@ func move_character(delta: float) -> void:
 			if abs(velocity.x) < speed:
 				velocity.x += direction * speed * accel
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed / 30)
+			velocity.x = move_toward(velocity.x, 0, speed / 15)
 		if Input.is_action_just_pressed("ui_accept"):
 			jump_buffer_timer = jump_buffer_time
 		if jump_buffer_timer > 0 and can_jump() and !hanging:

@@ -326,6 +326,8 @@ size = Vector2(141.25, 190)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.8, 0.8)
+collision_layer = 129
+collision_mask = 129
 script = ExtResource("1_smehm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
