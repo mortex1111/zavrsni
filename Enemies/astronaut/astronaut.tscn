@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://df7elar4sb17f"]
+
+[ext_resource type="Texture2D" uid="uid://bsflorsb56iqk" path="res://Enemies/astronaut/sprites/shoot.png" id="1_lp7i4"]
+[ext_resource type="Script" uid="uid://d0b3jsfo08nen" path="res://Enemies/astronaut/astronaut.gd" id="1_rb6wy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb6wy"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohx4t"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(819, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f101j"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(1638, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bfli"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(2457, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83o07"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(3276, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qwyg"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(4095, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iolv"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(4914, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjcsq"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86cuf"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(5733, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a2hn"]
+atlas = ExtResource("1_lp7i4")
+region = Rect2(6552, 0, 819, 819)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxxvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb6wy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohx4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f101j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bfli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83o07")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_8qwyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iolv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjcsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86cuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a2hn")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 18.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rb6wy"]
+size = Vector2(205, 306)
+
+[node name="Astronaut" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_rb6wy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 2
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_rxxvu")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15.5, -2)
+shape = SubResource("RectangleShape2D_rb6wy")

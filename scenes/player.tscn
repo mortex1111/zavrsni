@@ -324,7 +324,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyy20"]
 size = Vector2(141.25, 190)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_smehm")
 

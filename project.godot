@@ -15,6 +15,10 @@ run/main_scene="res://temp/temp_map.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://temp/icon.svg"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/stretch/mode="canvas_items"
