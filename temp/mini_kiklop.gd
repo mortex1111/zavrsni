@@ -20,14 +20,16 @@ func mode():
 		attacking = true
 	else:
 		attacking = false
-	if abs($"../Player".global_position - global_position) > abs(($"../Player".global_position - global_position).normalized() * 700):
-		$RayCast2D.target_position = ($"../Player".global_position - global_position).normalized() * 700 + Vector2(0, 100)
-		$RayCast2D2.target_position = ($"../Player".global_position - global_position).normalized() * 700 + Vector2(0, 100)
+	if abs($"../Player".global_position - global_position) > abs(($"../Player".global_position - global_position).normalized() * 500):
+		$RayCast2D.target_position = ($"../Player".global_position - global_position).normalized() * 500 + Vector2(0, 100)
+		$RayCast2D2.target_position = ($"../Player".global_position - global_position).normalized() * 500 + Vector2(0, 100)
 	else:
 		$RayCast2D.target_position = ($"../Player".global_position - global_position) + Vector2(0, 100)
 		$RayCast2D2.target_position = ($"../Player".global_position - global_position) + Vector2(0, 100)
 
 func move():
+	$Attack/right.disabled = true
+	$Attack/left.disabled = true
 	tempAttacking = false
 	$AnimatedSprite2D.play("default")
 	if dir == -1:
@@ -48,10 +50,14 @@ func attack():
 			dir = -1
 	$AnimatedSprite2D.play("attack")
 	if dir == -1:
+		$Attack/right.disabled = true
+		$Attack/left.disabled = false
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.offset.x = 25
 		velocity.x = -speed * 2
 	else:
+		$Attack/right.disabled = false
+		$Attack/left.disabled = true
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.offset.x = 0
 		velocity.x = speed * 2

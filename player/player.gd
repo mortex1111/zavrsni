@@ -4,7 +4,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var lgrab: RayCast2D = $Lgrab
 @onready var check_up: RayCast2D = $Lgrab/CheckUp
-
+@export var HP: int = 3
 @export var accel: float = 0.8
 @export var speed: float = 600.0
 @export var jump_velocity: float = -1100.0

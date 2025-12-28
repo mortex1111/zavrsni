@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://vkhi7uroy7kk"]
+[gd_scene load_steps=66 format=3 uid="uid://vkhi7uroy7kk"]
 
 [ext_resource type="Script" uid="uid://c4v5qtfoaep3b" path="res://map1/map1Code.gd" id="1_a42rq"]
 [ext_resource type="Texture2D" uid="uid://ouq4wn6c6eww" path="res://temp/12.jpg" id="2_a42rq"]
@@ -460,13 +460,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5oev5"]
-size = Vector2(120, 225)
+size = Vector2(120, 173)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8ib0"]
-size = Vector2(15, 225)
+size = Vector2(15, 179.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbyx8"]
 size = Vector2(15, 36.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ujb2"]
+size = Vector2(161.875, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diaxa"]
 size = Vector2(474, 91.5)
@@ -851,24 +854,24 @@ position = Vector2(2196, -79)
 script = ExtResource("21_u8ib0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="miniKiklop"]
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ufqis")
-animation = &"attack"
-frame_progress = 0.24578288
+frame_progress = 0.29269934
 offset = Vector2(25, 0)
 flip_h = true
 
 [node name="body" type="CollisionShape2D" parent="miniKiklop"]
-position = Vector2(9, -0.5)
+position = Vector2(9, -3.5)
 shape = SubResource("RectangleShape2D_5oev5")
 
 [node name="Turn" type="Area2D" parent="miniKiklop"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn"]
-position = Vector2(-68, -3)
+position = Vector2(-70, -20)
 shape = SubResource("RectangleShape2D_u8ib0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn"]
-position = Vector2(87, -4)
+position = Vector2(89, -16)
 shape = SubResource("RectangleShape2D_u8ib0")
 
 [node name="Turn2" type="Area2D" parent="miniKiklop"]
@@ -892,6 +895,18 @@ collision_mask = 16
 position = Vector2(10, -72)
 target_position = Vector2(-282, 16)
 collision_mask = 128
+
+[node name="Attack" type="Area2D" parent="miniKiklop"]
+
+[node name="left" type="CollisionShape2D" parent="miniKiklop/Attack"]
+position = Vector2(-71.875, 6.5)
+shape = SubResource("RectangleShape2D_4ujb2")
+disabled = true
+
+[node name="right" type="CollisionShape2D" parent="miniKiklop/Attack"]
+position = Vector2(83.0625, 7)
+shape = SubResource("RectangleShape2D_4ujb2")
+disabled = true
 
 [node name="map" type="StaticBody2D" parent="."]
 collision_layer = 17
