@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://df7elar4sb17f"]
+[gd_scene load_steps=20 format=3 uid="uid://df7elar4sb17f"]
 
 [ext_resource type="Texture2D" uid="uid://bsflorsb56iqk" path="res://Enemies/astronaut/sprites/shoot.png" id="1_lp7i4"]
 [ext_resource type="Script" uid="uid://d0b3jsfo08nen" path="res://Enemies/astronaut/astronaut.gd" id="1_rb6wy"]
@@ -89,6 +89,100 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rb6wy"]
 size = Vector2(205, 306)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rb6wy"]
+radius = 789.1071
+
+[sub_resource type="Animation" id="Animation_rb6wy"]
+resource_name = "shoot"
+length = 0.921
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.73333335, 0.76666665, 0.8, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"shoot"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.73333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ohx4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_f101j"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4bfli"]
+_data = {
+&"RESET": SubResource("Animation_ohx4t"),
+&"idle": SubResource("Animation_f101j"),
+&"shoot": SubResource("Animation_rb6wy")
+}
+
 [node name="Astronaut" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_rb6wy")
@@ -97,8 +191,24 @@ script = ExtResource("1_rb6wy")
 texture_filter = 2
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_rxxvu")
-animation = &"idle"
+animation = &"shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-15.5, -2)
 shape = SubResource("RectangleShape2D_rb6wy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rb6wy")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-125, -29)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4bfli")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

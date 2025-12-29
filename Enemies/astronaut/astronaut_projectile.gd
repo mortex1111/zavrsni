@@ -1,17 +1,20 @@
 extends CharacterBody2D
 
-@export var speed: int = 200
+@export var speed: int = 400
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-var player_pos 
+
+var player_pos
+var player_dir  
 
 func _ready() -> void:
 	player_pos = player.global_position
+	player_dir = global_position.direction_to(player_pos)
 	look_at(player_pos)
 
 func _physics_process(delta: float) -> void:
-	global_position = global_position.move_toward(player_pos, speed * delta)
+	global_position += player_dir * speed * delta
 	
 	if global_position == player_pos:
 		queue_free()

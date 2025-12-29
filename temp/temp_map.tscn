@@ -843,7 +843,7 @@ libraries = {
 }
 
 [node name="Astronaut" parent="." instance=ExtResource("19_6aso7")]
-position = Vector2(1461, -625)
+position = Vector2(1423, -249)
 radius = 500.0
 
 [node name="astronaut_projectile" parent="." instance=ExtResource("20_31fwx")]
@@ -909,7 +909,7 @@ shape = SubResource("RectangleShape2D_4ujb2")
 disabled = true
 
 [node name="map" type="StaticBody2D" parent="."]
-collision_layer = 17
+collision_layer = 19
 collision_mask = 17
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map"]

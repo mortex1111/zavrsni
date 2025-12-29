@@ -1,10 +1,16 @@
 extends CharacterBody2D
 
 var check = preload("res://Enemies/astronaut/astronaut_check.tscn")
+var projectile = preload("res://Enemies/astronaut/astronaut_projectile.tscn")
 
-@export var radius: float = 600.0
-@export var speed: float = 50
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var shoot_delay: float = 4.0
+@export var radius: float = 400.0
+@export var speed: float = 75
+
+var shoot_timer: float = 0.0
+var player_in_range = false
 var traveling = false
 var next_pos
 
@@ -20,6 +26,13 @@ func find_next_pos():
 
 
 func _physics_process(delta: float) -> void:
+	
+	if player_in_range and shoot_timer >= shoot_delay:
+		$AnimationPlayer.play("shoot")
+		shoot_timer = 0.0
+	else:
+		shoot_timer += delta
+
 	if !traveling:
 		find_next_pos()
 		traveling = true
@@ -31,3 +44,16 @@ func _physics_process(delta: float) -> void:
 		find_next_pos()
 	
 	move_and_slide()
+
+func shoot():
+	var projectile_instance = projectile.instantiate()
+	add_child(projectile_instance)
+	projectile_instance.global_position = $Marker2D.global_position
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") :
+		player_in_range = true
+		
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player") :
+		player_in_range = false

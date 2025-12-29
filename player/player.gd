@@ -3,15 +3,17 @@ extends CharacterBody2D
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var lgrab: RayCast2D = $Lgrab
-@onready var check_up: RayCast2D = $Lgrab/CheckUp
+@onready var check_up: RayCast2D = $CheckUp
 @export var HP: int = 3
 @export var accel: float = 0.8
 @export var speed: float = 600.0
+@export var dodge_speed: float = 2000.0
 @export var jump_velocity: float = -1100.0
 @export var jump_cutoff: float = -300.0
 @export var coyote_time: float = 0.15
 @export var jump_buffer_time: float = 0.15
 @export var hang_delay: float = 0.2
+@export var air_dodge_duration: float = 0.2
 @export var max_jumps: int = 2
 @export var attack_cool_len: int = 120
 @export var attack_len: int = 60
@@ -23,6 +25,7 @@ var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var hang_timer1: float = 0.0
 var hang_timer2: float = 0.0
+var air_dodge_timer: float = 0.0
 var jumps_done: int = 0
 var attacking = false
 var running = false
@@ -31,6 +34,9 @@ var idle = true
 var inAri = false
 var hanging = false
 var can_move = true
+var is_dodging = false
+var can_dodge = true
+var last_dir = 0
 
 func _physics_process(delta: float) -> void:
 	is_hanging()
@@ -43,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 func is_hanging():
 	if lgrab.is_colliding() and !hanging and hang_timer1 <= 0.0:
-		if lgrab.get_collider().name == "temp":
+		if lgrab.get_collider().name == "map":
 			if !check_up.is_colliding():
 				velocity = Vector2.ZERO
 				var grab_position_x = lgrab.get_collision_point().x - 41
@@ -54,15 +60,17 @@ func is_hanging():
 				hanging = true
 
 func move_character(delta: float) -> void:
-		direction = Input.get_axis("ui_left", "ui_right")
+		if !is_dodging:
+			direction = Input.get_axis("ui_left", "ui_right")
 		if hanging:
+			is_dodging = false
 			hang_timer2 -= delta
 		if hanging and direction != 0 and hang_timer2 <= 0.0:
 			hanging = false
 		if !hanging:
 			hang_timer1 -= delta
 			
-		if not is_on_floor() and !hanging:
+		if not is_on_floor() and !hanging and !is_dodging:
 			velocity.y += gravity * delta * 2.1
 			accel = 0.02
 		else:
@@ -70,12 +78,37 @@ func move_character(delta: float) -> void:
 			coyote_timer = coyote_time
 			jumps_done = 0
 			accel = 0.04
-		if direction != 0 and !hanging:
+		if direction != 0 and !hanging and !is_dodging:
 			if abs(velocity.x) < speed:
 				velocity.x += direction * speed * accel
-		else:
+				print(velocity.x)
+		elif !is_dodging:
 			velocity.x = move_toward(velocity.x, 0, speed / 15)
-		if Input.is_action_just_pressed("ui_accept"):
+			
+		if direction != 0:
+			last_dir = direction
+			
+		if Input.is_action_just_pressed("air_dodge") and !is_on_floor() and !is_dodging and !hanging and can_dodge:
+			velocity.y = 0
+			velocity.x = 0
+			can_dodge = false
+			is_dodging = true
+		
+		if is_on_floor():
+			air_dodge_timer = 0.0
+			can_dodge = true
+			is_dodging = false
+		
+		if is_dodging:
+			velocity.x = last_dir * dodge_speed 
+			air_dodge_timer += delta
+		
+		if air_dodge_timer >= air_dodge_duration:
+			air_dodge_timer = 0.0
+			velocity.x = 0
+			is_dodging = false
+
+		if Input.is_action_just_pressed("ui_accept") and !is_dodging:
 			jump_buffer_timer = jump_buffer_time
 		if jump_buffer_timer > 0 and can_jump() and !hanging:
 			start_jump()
@@ -90,6 +123,7 @@ func can_jump() -> bool:
 	return false
 
 func start_jump():
+	velocity.x = abs(velocity.x) * direction
 	velocity.y = jump_velocity
 	is_jumping = true
 	coyote_timer = 0.0
@@ -108,7 +142,7 @@ func animations_test():
 		idle = true
 	else:
 		idle = false
-	if velocity.x != 0:
+	if velocity.x != 0 and !is_dodging:
 		running = true
 	else:
 		running = false
@@ -132,6 +166,8 @@ func animations():
 		$AnimationPlayer.play("hanging")
 	elif idle:
 		$AnimationPlayer.play("idle")
+	elif is_dodging:
+		$AnimationPlayer.play("air_dodge")
 
 func hit_box():
 	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "attack":
