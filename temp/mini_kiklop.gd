@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var speed = 200
+var HP = 3
 var attacking = false 
 var tempAttacking = false 
 var dir = -1
@@ -70,3 +71,9 @@ func _on_turn_body_entered(body: Node2D) -> void:
 @warning_ignore("unused_parameter")
 func _on_turn_2_body_exited(body: Node2D) -> void:
 	dir *= -1
+
+
+func _on_dmg_area_area_entered(area: Area2D) -> void:
+	HP -= int(area.editor_description)
+	if HP < 1:
+		queue_free()

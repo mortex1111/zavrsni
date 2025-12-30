@@ -81,6 +81,7 @@ air_dodge={
 
 2d_physics/layer_2="attackPlayer"
 2d_physics/layer_3="enemyAttack"
+2d_physics/layer_4="enemy"
 2d_physics/layer_5="obsticles(walls..)"
 2d_physics/layer_8="player"
 

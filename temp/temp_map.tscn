@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://c8ubcgqo1x4di" path="res://map1/interactions/levert1/Project (20251127072312).png" id="16_d0dpa"]
 [ext_resource type="Texture2D" uid="uid://dpc55cfy5qg0h" path="res://map1/interactions/levert1/Project (20251127072319).png" id="17_h8bpr"]
 [ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="19_6aso7"]
-[ext_resource type="PackedScene" uid="uid://bbvhk5evg7o6y" path="res://Enemies/astronaut/astronaut_projectile.tscn" id="20_31fwx"]
 [ext_resource type="Texture2D" uid="uid://7yhbe4s6cl67" path="res://Enemies/miniKiklop/attack (20251228091842).png" id="21_jyy20"]
 [ext_resource type="Script" uid="uid://bf7gd2rlil42o" path="res://temp/mini_kiklop.gd" id="21_u8ib0"]
 [ext_resource type="Texture2D" uid="uid://u3i32j68w1tq" path="res://Enemies/miniKiklop/Project (20251228092735).png" id="22_jyy20"]
@@ -471,6 +470,9 @@ size = Vector2(15, 36.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ujb2"]
 size = Vector2(161.875, 115)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0jtq"]
+size = Vector2(117, 173)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diaxa"]
 size = Vector2(474, 91.5)
 
@@ -847,9 +849,6 @@ libraries = {
 position = Vector2(4309, -1966)
 radius = 500.0
 
-[node name="astronaut_projectile" parent="." instance=ExtResource("20_31fwx")]
-position = Vector2(3866, -1800)
-
 [node name="miniKiklop" type="CharacterBody2D" parent="."]
 position = Vector2(2196, -79)
 collision_layer = 0
@@ -920,6 +919,14 @@ position = Vector2(83.0625, 7)
 shape = SubResource("RectangleShape2D_4ujb2")
 disabled = true
 
+[node name="dmgArea" type="Area2D" parent="miniKiklop"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/dmgArea"]
+position = Vector2(8.5, -2.5)
+shape = SubResource("RectangleShape2D_y0jtq")
+
 [node name="map" type="StaticBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
@@ -966,3 +973,4 @@ polygon = PackedVector2Array(929, -937, 930, -793, 2018, -790, 2016, -937, 1974,
 [connection signal="body_entered" from="miniKiklop/Turn" to="miniKiklop" method="_on_turn_body_entered"]
 [connection signal="body_exited" from="miniKiklop/Turn2" to="miniKiklop" method="_on_turn_2_body_exited"]
 [connection signal="body_exited" from="miniKiklop/Turn3" to="miniKiklop" method="_on_turn_2_body_exited"]
+[connection signal="area_entered" from="miniKiklop/dmgArea" to="miniKiklop" method="_on_dmg_area_area_entered"]

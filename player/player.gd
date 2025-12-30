@@ -216,3 +216,7 @@ func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 	HP -= int(area.editor_description)
 	dmgLen = dmgCoolLen
 	invizLen = dmgCoolLen * 5
+
+
+func _on_attack_area_entered(area: Area2D) -> void:
+	print("you hit an enemy")

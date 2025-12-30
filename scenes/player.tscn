@@ -384,8 +384,9 @@ libraries = {
 }
 
 [node name="attack" type="Area2D" parent="."]
+editor_description = "1"
 collision_layer = 2
-collision_mask = 0
+collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="attack"]
 position = Vector2(115.625, 7.5)
@@ -416,4 +417,5 @@ shape = SubResource("RectangleShape2D_y4r1p")
 [node name="grabMarker" type="Marker2D" parent="."]
 position = Vector2(47.5, -52.5)
 
+[connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]
 [connection signal="area_entered" from="dmgHitbox" to="." method="_on_dmg_hitbox_area_entered"]
