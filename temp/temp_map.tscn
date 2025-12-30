@@ -897,6 +897,8 @@ target_position = Vector2(-282, 16)
 collision_mask = 128
 
 [node name="Attack" type="Area2D" parent="miniKiklop"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="left" type="CollisionShape2D" parent="miniKiklop/Attack"]
 position = Vector2(-71.875, 6.5)
