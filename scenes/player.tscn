@@ -378,12 +378,12 @@ _data = {
 size = Vector2(141.25, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
-size = Vector2(26.250002, 165.00003)
+size = Vector2(110.00007, 165.00003)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-scale = Vector2(0.8, 0.8)
-collision_layer = 129
-collision_mask = 129
+scale = Vector2(-0.8, 0.8)
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("1_smehm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -398,7 +398,6 @@ hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-2.5, 16.25)
 shape = SubResource("CapsuleShape2D_a42rq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -409,7 +408,7 @@ libraries = {
 [node name="attack" type="Area2D" parent="."]
 visible = false
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="attack"]
 position = Vector2(115.625, 7.50009)
@@ -419,12 +418,14 @@ shape = SubResource("RectangleShape2D_jyy20")
 position = Vector2(0, -48.749996)
 scale = Vector2(1, 10)
 target_position = Vector2(99.99999, 0)
+collision_mask = 16
 hit_from_inside = true
 
 [node name="CheckUp" type="RayCast2D" parent="."]
 position = Vector2(99.99999, -79.99999)
 scale = Vector2(0.99999994, 0.99999994)
 target_position = Vector2(0, -200)
+collision_mask = 16
 hit_from_inside = true
 
 [node name="dmgHitbox" type="Area2D" parent="."]
@@ -432,8 +433,8 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dmgHitbox"]
-position = Vector2(-3.1249995, 17.499989)
-scale = Vector2(0.99999964, 0.99999964)
+position = Vector2(1.2499986, 17.499989)
+scale = Vector2(0.99999934, 0.99999934)
 shape = SubResource("RectangleShape2D_y4r1p")
 
 [connection signal="area_entered" from="dmgHitbox" to="." method="_on_dmg_hitbox_area_entered"]

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 @export var speed: int = 400
 
@@ -15,6 +15,3 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	global_position += player_dir * speed * delta
-	
-	if global_position == player_pos:
-		queue_free()

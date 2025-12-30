@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 @onready var lgrab: RayCast2D = $Lgrab
 @onready var check_up: RayCast2D = $CheckUp
 @export var HP: int = 3
@@ -17,7 +16,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var max_jumps: int = 2
 @export var attack_cool_len: int = 120
 @export var attack_len: int = 60
-@export var dmgCoolLen: float = 0.5
+@export var dmgCoolLen: float = 0.3
 
 var dmgLen: float = 0
 var invizLen: float = 0
@@ -25,11 +24,11 @@ var direction = 0
 var attack_cool: int = -1
 var is_jumping: bool = false
 var coyote_timer: float = 0.0
-var jump_buffer_timer: float = 0.0
+var jumpBufferTimer: float = 0.0
 var hang_timer1: float = 0.0
 var hang_timer2: float = 0.0
-var air_dodge_timer: float = 0.0
-var jumps_done: int = 0
+var airDodgeTimer: float = 0.0
+var curJumps: int = 0
 var attacking = false
 var running = false
 var knock_back = false
@@ -39,11 +38,11 @@ var hanging = false
 var can_move = true
 var is_dodging = false
 var can_dodge = true
-var last_dir = 0
+var last_dir = -1
 
 func _physics_process(delta: float) -> void:
 	is_hanging()
-	handle_timers(delta)
+	timers(delta)
 	move_character(delta)
 	animations_test()
 	animations()
@@ -63,6 +62,7 @@ func is_hanging():
 				hanging = true
 
 func move_character(delta: float) -> void:
+	if dmgLen < 0:
 		if !is_dodging:
 			direction = Input.get_axis("ui_left", "ui_right")
 		if hanging:
@@ -79,40 +79,33 @@ func move_character(delta: float) -> void:
 		else:
 			is_jumping = false
 			coyote_timer = coyote_time
-			jumps_done = 0
+			curJumps = 0
 			accel = 0.04
 		if direction != 0 and !hanging and !is_dodging:
 			if abs(velocity.x) < speed:
 				velocity.x += direction * speed * accel
 		elif !is_dodging:
 			velocity.x = move_toward(velocity.x, 0, speed / 15)
-			
-		if direction != 0:
-			last_dir = direction
-			
 		if Input.is_action_just_pressed("air_dodge") and !is_on_floor() and !is_dodging and !hanging and can_dodge:
 			velocity.y = 0
 			velocity.x = 0
 			can_dodge = false
 			is_dodging = true
-		
 		if is_on_floor():
-			air_dodge_timer = 0.0
+			airDodgeTimer = 0.0
 			can_dodge = true
 			is_dodging = false
-		
 		if is_dodging:
 			velocity.x = last_dir * dodge_speed 
-			air_dodge_timer += delta
-		
-		if air_dodge_timer >= air_dodge_duration:
-			air_dodge_timer = 0.0
+			airDodgeTimer += delta
+		if airDodgeTimer >= air_dodge_duration:
+			airDodgeTimer = 0.0
 			velocity.x = 0
 			is_dodging = false
 
 		if Input.is_action_just_pressed("ui_accept") and !is_dodging:
-			jump_buffer_timer = jump_buffer_time
-		if jump_buffer_timer > 0 and can_jump() and !hanging:
+			jumpBufferTimer = jump_buffer_time
+		if jumpBufferTimer > 0 and can_jump() and !hanging:
 			start_jump()
 		if Input.is_action_just_released("ui_accept") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
@@ -120,7 +113,7 @@ func move_character(delta: float) -> void:
 func can_jump() -> bool:
 	if is_on_floor() or coyote_timer > 0:
 		return true
-	if jumps_done < max_jumps:
+	if curJumps < max_jumps:
 		return true
 	return false
 
@@ -129,14 +122,14 @@ func start_jump():
 	velocity.y = jump_velocity
 	is_jumping = true
 	coyote_timer = 0.0
-	jump_buffer_timer = 0.0
-	jumps_done += 1
+	jumpBufferTimer = 0.0
+	curJumps += 1
 
-func handle_timers(delta: float) -> void:
+func timers(delta: float) -> void:
 	if coyote_timer > 0:
 		coyote_timer -= delta
-	if jump_buffer_timer > 0:
-		jump_buffer_timer -= delta
+	if jumpBufferTimer > 0:
+		jumpBufferTimer -= delta
 	@warning_ignore("narrowing_conversion")
 	attack_cool -= delta
 	dmgLen -= delta
@@ -165,8 +158,6 @@ func animations_test():
 
 func animations():
 	if dmgLen > 0:
-		print("dmgLen")
-		print(dmgLen)
 		$AnimationPlayer.play("air_dodge")
 	elif attacking:
 		$AnimationPlayer.play("attack")
@@ -179,20 +170,29 @@ func animations():
 	elif is_dodging:
 		$AnimationPlayer.play("air_dodge")
 	
+	
+	if direction != 0 and direction != last_dir:
+		last_dir = direction
+		scale.x = abs(scale.x) * last_dir
+	
+	
 	if invizLen > 0:
-		print("invizLen")
-		print(invizLen)
 		modulate = Color(1,0,0, 0.5)
 	else:
 		modulate = Color(1,1,1)
 
 func hit_box():
+	if invizLen > 0:
+		$dmgHitbox/CollisionShape2D.disabled = true
+	else:
+		$dmgHitbox/CollisionShape2D.disabled = false
 	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "attack":
 		$attack/CollisionShape2D2.disabled = false
 	else: 
 		$attack/CollisionShape2D2.disabled = true
 
 func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
+	velocity = (global_position - area.global_position).normalized() * 400
 	HP -= int(area.editor_description)
 	dmgLen = dmgCoolLen
-	invizLen = dmgCoolLen * 3
+	invizLen = dmgCoolLen * 5
