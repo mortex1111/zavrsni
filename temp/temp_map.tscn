@@ -844,11 +844,11 @@ libraries = {
 }
 
 [node name="Astronaut" parent="." instance=ExtResource("19_6aso7")]
-position = Vector2(1423, -249)
+position = Vector2(4309, -1966)
 radius = 500.0
 
 [node name="astronaut_projectile" parent="." instance=ExtResource("20_31fwx")]
-position = Vector2(980, -83)
+position = Vector2(3866, -1800)
 
 [node name="miniKiklop" type="CharacterBody2D" parent="."]
 position = Vector2(2196, -79)

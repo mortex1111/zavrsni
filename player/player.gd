@@ -18,6 +18,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var attack_len: int = 60
 @export var dmgCoolLen: float = 0.3
 
+var scX = 0.8
+
 var dmgLen: float = 0
 var invizLen: float = 0
 var direction: float = 0
@@ -178,7 +180,21 @@ func animations():
 	
 	if direction != 0:
 		last_dir = direction
-
+	if last_dir > 0:
+		$Sprite2D.flip_h = false
+		$Sprite2D.offset.x = 0
+		$attack/CollisionShape2D2.position = abs($attack/CollisionShape2D2.position)
+		$Lgrab.position = Vector2(47.5, -65)
+		$Lgrab.target_position.x = 52.5
+		$CheckUp.position = Vector2(100, -80)
+	else:
+		$Sprite2D.flip_h = true
+		$Sprite2D.offset.x = 45
+		$attack/CollisionShape2D2.position = abs($attack/CollisionShape2D2.position) * -1
+		$Lgrab.position = Vector2(-47.5, -65)
+		$Lgrab.target_position.x = -52.5
+		$CheckUp.position = Vector2(-100, -80)
+	
 	if invizLen > 0:
 		modulate = Color(1,0,0, 0.5)
 	else:
