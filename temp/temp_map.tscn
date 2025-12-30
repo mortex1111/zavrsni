@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://vkhi7uroy7kk"]
+[gd_scene load_steps=71 format=3 uid="uid://vkhi7uroy7kk"]
 
 [ext_resource type="Script" uid="uid://c4v5qtfoaep3b" path="res://map1/map1Code.gd" id="1_a42rq"]
 [ext_resource type="Texture2D" uid="uid://ouq4wn6c6eww" path="res://temp/12.jpg" id="2_a42rq"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://7yhbe4s6cl67" path="res://Enemies/miniKiklop/attack (20251228091842).png" id="21_jyy20"]
 [ext_resource type="Script" uid="uid://bf7gd2rlil42o" path="res://temp/mini_kiklop.gd" id="21_u8ib0"]
 [ext_resource type="Texture2D" uid="uid://u3i32j68w1tq" path="res://Enemies/miniKiklop/Project (20251228092735).png" id="22_jyy20"]
+[ext_resource type="Texture2D" uid="uid://bssrjy6m6rav2" path="res://Enemies/miniKiklop/Project (20251230083028).png" id="22_u8ib0"]
 [ext_resource type="Texture2D" uid="uid://b1p4y4uwnli7x" path="res://map1/interactions/rocket/Project (20251127072005).png" id="23_xxv45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckyeh"]
@@ -385,6 +386,22 @@ region = Rect2(6552, 0, 819, 819)
 atlas = ExtResource("22_jyy20")
 region = Rect2(7371, 0, 819, 819)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyy20"]
+atlas = ExtResource("22_u8ib0")
+region = Rect2(6825, 0, 1365, 1365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxiwj"]
+atlas = ExtResource("22_u8ib0")
+region = Rect2(5460, 0, 1365, 1365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ostn5"]
+atlas = ExtResource("22_u8ib0")
+region = Rect2(4095, 0, 1365, 1365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pffeu"]
+atlas = ExtResource("22_u8ib0")
+region = Rect2(2730, 0, 1365, 1365)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ufqis"]
 animations = [{
 "frames": [{
@@ -455,6 +472,32 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_jyy20")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_rxiwj")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_ostn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pffeu")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_ostn5")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_rxiwj")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_jyy20")
+}],
+"loop": false,
+"name": &"dmg",
 "speed": 5.0
 }]
 
@@ -846,7 +889,7 @@ libraries = {
 }
 
 [node name="Astronaut" parent="." instance=ExtResource("19_6aso7")]
-position = Vector2(4309, -1966)
+position = Vector2(1338, -235)
 radius = 500.0
 
 [node name="miniKiklop" type="CharacterBody2D" parent="."]
@@ -858,7 +901,7 @@ script = ExtResource("21_u8ib0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="miniKiklop"]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ufqis")
-frame_progress = 0.29269934
+animation = &"dmg"
 offset = Vector2(25, 0)
 flip_h = true
 

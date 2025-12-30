@@ -4,15 +4,20 @@ var HP = 3
 var attacking = false 
 var tempAttacking = false 
 var dir = -1
+var hurting = 1
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	mode()
 	if !is_on_floor():
-		velocity.y = 500
-	if !attacking:
+		velocity.y = 1000
+	if hurting > 0:
+		dmgTake(delta)
+	elif !attacking:
+		$AnimatedSprite2D.scale = Vector2(0.8, 0.8)
 		move()
 	else:
+		$AnimatedSprite2D.scale = Vector2(0.8, 0.8)
 		attack()
 	move_and_slide()
 
@@ -27,6 +32,12 @@ func mode():
 	else:
 		$RayCast2D.target_position = ($"../Player".global_position - global_position) + Vector2(0, 100)
 		$RayCast2D2.target_position = ($"../Player".global_position - global_position) + Vector2(0, 100)
+
+func dmgTake(delta: float):
+	hurting -= delta
+	$Attack.monitorable = false
+	velocity.x = 0
+	$AnimatedSprite2D.scale = Vector2(0.5, 0.5)
 
 func move():
 	$Attack/right.disabled = true
@@ -43,6 +54,7 @@ func move():
 		velocity.x = speed
 
 func attack():
+	$Attack.monitorable = true
 	if tempAttacking == false:
 		tempAttacking = true
 		if (global_position.x < $"../Player".global_position.x):
@@ -75,5 +87,7 @@ func _on_turn_2_body_exited(body: Node2D) -> void:
 
 func _on_dmg_area_area_entered(area: Area2D) -> void:
 	HP -= int(area.editor_description)
+	$AnimatedSprite2D.play("dmg")
+	hurting = 2
 	if HP < 1:
 		queue_free()

@@ -1,13 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bn1o3txh2pdk7"]
+[gd_scene load_steps=17 format=3 uid="uid://bn1o3txh2pdk7"]
 
 [ext_resource type="Script" uid="uid://gg6rt47r6p0w" path="res://player/player.gd" id="1_smehm"]
 [ext_resource type="Texture2D" uid="uid://b7qqai14qhfsh" path="res://temp/temp.png" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://b25y5ilyyx6xu" path="res://player/sprites/Project (20251126015330).png" id="3_y4r1p"]
-[ext_resource type="Texture2D" uid="uid://dc6x3bl0f5pr5" path="res://temp/IMG-20251130-WA0001.jpg" id="4_d2wvv"]
-[ext_resource type="Texture2D" uid="uid://dhf7tngylm0w3" path="res://temp/IMG-20251130-WA0003.jpg" id="5_3v2ag"]
-[ext_resource type="Texture2D" uid="uid://dwns0h3w2vm0i" path="res://temp/IMG-20251130-WA0004.jpg" id="6_jej6c"]
-[ext_resource type="Texture2D" uid="uid://fq8gbqh8kh5x" path="res://temp/IMG-20251130-WA0005.jpg" id="7_f1ej7"]
-[ext_resource type="Texture2D" uid="uid://celxw3syt1rj6" path="res://temp/IMG-20251130-WA0006.jpg" id="8_oprun"]
+[ext_resource type="Texture2D" uid="uid://c0f4wh54b3nyr" path="res://player/sprites/attackAnim.png" id="5_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dah0p3e1alei" path="res://player/sprites/hanging.png" id="9_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://s05aaegpi8dv" path="res://player/sprites/air_dodge.png" id="10_y4r1p"]
 
@@ -245,8 +241,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_dsqjq"]
 resource_name = "attack"
-length = 1.6
-loop_mode = 1
+length = 0.25
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -255,10 +250,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.894505, 1.19427),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_d2wvv"), ExtResource("5_3v2ag"), ExtResource("6_jej6c"), ExtResource("7_f1ej7"), ExtResource("8_oprun")]
+"values": [ExtResource("5_tuyoq")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -279,10 +274,22 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.20043, 1.30043, 1.40043),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.07966168, 0.13823102),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2]
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
 }
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
@@ -335,6 +342,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_d72yr"]
 resource_name = "idle"
@@ -351,7 +370,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyy20"]
-size = Vector2(141.25, 190)
+size = Vector2(183.75, 237.49998)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
 size = Vector2(110.00007, 165.00003)
@@ -389,7 +408,8 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="attack"]
-position = Vector2(115.625, 7.5)
+position = Vector2(136.87498, -16.249989)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_jyy20")
 
 [node name="Lgrab" type="RayCast2D" parent="."]

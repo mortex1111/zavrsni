@@ -14,8 +14,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var hang_delay: float = 0.2
 @export var air_dodge_duration: float = 0.2
 @export var max_jumps: int = 2
-@export var attack_cool_len: int = 120
-@export var attack_len: int = 60
+@export var attack_cool_len: int = 60
+@export var attack_len: int = 45
 @export var dmgCoolLen: float = 0.3
 
 var scX = 0.8
