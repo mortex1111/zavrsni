@@ -20,7 +20,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var dmgLen: float = 0
 var invizLen: float = 0
-var direction = 0
+var direction: float = 0
 var attack_cool: int = -1
 var is_jumping: bool = false
 var coyote_timer: float = 0.0
@@ -54,9 +54,13 @@ func is_hanging():
 		if lgrab.get_collider().name == "map":
 			if !check_up.is_colliding():
 				velocity = Vector2.ZERO
-				var grab_position_x = lgrab.get_collision_point().x - 41
+				var grab_position_x
+				if last_dir == -1:
+					grab_position_x = lgrab.get_collision_point().x +41
+				else: 
+					grab_position_x = lgrab.get_collision_point().x - 41
 				var grab_position_y = lgrab.get_collision_point().y + 41
-				self.position = Vector2(grab_position_x,grab_position_y)
+				self.global_position = Vector2(grab_position_x,grab_position_y)
 				hang_timer1 = hang_delay
 				hang_timer2 = hang_delay
 				hanging = true
@@ -73,9 +77,10 @@ func move_character(delta: float) -> void:
 		if !hanging:
 			hang_timer1 -= delta
 			
-		if not is_on_floor() and !hanging and !is_dodging:
-			velocity.y += gravity * delta * 2.1
-			accel = 0.02
+		if not is_on_floor() and !hanging:
+			if !is_dodging:
+				velocity.y += gravity * delta * 2.1
+				accel = 0.02
 		else:
 			is_jumping = false
 			coyote_timer = coyote_time
@@ -171,11 +176,9 @@ func animations():
 		$AnimationPlayer.play("air_dodge")
 	
 	
-	if direction != 0 and direction != last_dir:
+	if direction != 0:
 		last_dir = direction
-		scale.x = abs(scale.x) * last_dir
-	
-	
+
 	if invizLen > 0:
 		modulate = Color(1,0,0, 0.5)
 	else:
@@ -192,6 +195,7 @@ func hit_box():
 		$attack/CollisionShape2D2.disabled = true
 
 func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
+	hanging = false
 	velocity = (global_position - area.global_position).normalized() * 400
 	HP -= int(area.editor_description)
 	dmgLen = dmgCoolLen

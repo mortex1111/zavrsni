@@ -6,7 +6,7 @@
 size = Vector2(400, 400)
 
 [node name="AstronautCheck" type="Area2D"]
-collision_mask = 2
+collision_mask = 16
 script = ExtResource("1_nhg4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
