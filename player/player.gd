@@ -211,11 +211,12 @@ func hit_box():
 		$attack/CollisionShape2D2.disabled = true
 
 func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
-	hanging = false
-	velocity = (global_position - area.global_position).normalized() * 400
-	HP -= int(area.editor_description)
-	dmgLen = dmgCoolLen
-	invizLen = dmgCoolLen * 5
+	if !is_dodging:
+		hanging = false
+		velocity = (global_position - area.global_position).normalized() * 400
+		HP -= int(area.editor_description)
+		dmgLen = dmgCoolLen
+		invizLen = dmgCoolLen * 5
 
 
 func _on_attack_area_entered(area: Area2D) -> void:
