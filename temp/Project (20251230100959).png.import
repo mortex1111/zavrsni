@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm42iq3iyteps"
-path="res://.godot/imported/Project (20251127063506).png-7264a8075c40e9dfff233496f4cbc917.ctex"
+uid="uid://daaxasvyc3aeg"
+path="res://.godot/imported/Project (20251230100959).png-a8339b3ac1c3bb8ab0204a6aa6120906.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://map1/interactions/rocket/rocet boost/Project (20251127063506).png"
-dest_files=["res://.godot/imported/Project (20251127063506).png-7264a8075c40e9dfff233496f4cbc917.ctex"]
+source_file="res://temp/Project (20251230100959).png"
+dest_files=["res://.godot/imported/Project (20251230100959).png-a8339b3ac1c3bb8ab0204a6aa6120906.ctex"]
 
 [params]
 

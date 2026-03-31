@@ -1,10 +1,7 @@
 extends Node2D
 
 func _ready():
-	$objects/sRoc1/AnimationPlayer.current_animation = "takeoff"
-	$objects/sRoc1/AnimationPlayer.stop()
-	$objects/sRoc2/AnimationPlayer.current_animation = "takeoff_2"
-	$objects/sRoc2/AnimationPlayer.stop()
+	pass
 
 func _on_lever_1_area_entered(area: Area2D) -> void:
 	$objects/levers/Lever1/AnimationPlayer.play("leverSw")
