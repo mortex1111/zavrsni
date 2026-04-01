@@ -33,6 +33,7 @@ var airDodgeTimer: float = 0.0
 var curJumps: int = 0
 var attacking = false
 var running = false
+var knockVal = 1
 var knock_back = false
 var idle = true
 var inAri = false
@@ -116,6 +117,15 @@ func move_character(delta: float) -> void:
 			start_jump()
 		if Input.is_action_just_released("ui_accept") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
+	else:
+		var collision = move_and_collide(velocity * delta)
+		if collision != null:
+			var normal = collision.get_normal()
+			print(normal)
+			if normal.x != 0:
+				velocity.x *= -1
+			if normal.y != 0:
+				velocity.y *= -1
 
 func can_jump() -> bool:
 	if is_on_floor() or coyote_timer > 0:
@@ -213,10 +223,11 @@ func hit_box():
 func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 	if !is_dodging:
 		hanging = false
-		velocity = (global_position - area.global_position).normalized() * 400
+		velocity = (global_position - area.global_position).normalized() * 400 * knockVal
 		HP -= int(area.editor_description)
-		dmgLen = dmgCoolLen
-		invizLen = dmgCoolLen * 5
+		knockVal += 0.25
+		dmgLen = dmgCoolLen * knockVal
+		invizLen = dmgCoolLen * 3 * knockVal
 
 
 func _on_attack_area_entered(area: Area2D) -> void:

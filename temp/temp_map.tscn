@@ -227,7 +227,7 @@ size = Vector2(407.25, 1206)
 [node name="Start" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("3_h8bpr")]
-position = Vector2(1442.0001, 283)
+position = Vector2(1465, 89.000015)
 collision_layer = 128
 
 [node name="Astronaut" parent="." instance=ExtResource("19_6aso7")]
@@ -235,7 +235,7 @@ position = Vector2(1338, -235)
 radius = 500.0
 
 [node name="miniKiklop" type="CharacterBody2D" parent="."]
-position = Vector2(2196, -79)
+position = Vector2(1879, 149)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("21_u8ib0")
@@ -314,7 +314,7 @@ shape = SubResource("RectangleShape2D_y0jtq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1080, -370)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_w83sa")
 
 [node name="map" type="StaticBody2D" parent="Sprite2D"]
@@ -331,9 +331,13 @@ shape = SubResource("RectangleShape2D_jei4c")
 position = Vector2(-496, -251)
 shape = SubResource("RectangleShape2D_fgtpt")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/map/CollisionShape2D2"]
-position = Vector2(3134, -35)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/map"]
+position = Vector2(2638, -285.99997)
 shape = SubResource("RectangleShape2D_fgtpt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/map"]
+position = Vector2(1110, -1568.8002)
+shape = SubResource("RectangleShape2D_jei4c")
 
 [connection signal="body_entered" from="miniKiklop/Turn" to="miniKiklop" method="_on_turn_body_entered"]
 [connection signal="body_exited" from="miniKiklop/Turn2" to="miniKiklop" method="_on_turn_2_body_exited"]
