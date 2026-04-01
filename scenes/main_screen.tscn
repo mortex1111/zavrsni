@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://diwaiwqybriok"]
+
+[ext_resource type="Texture2D" uid="uid://cf45ysub0f2hm" path="res://temp/stickman_rise.png" id="1_7fvvs"]
+[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_kusfh"]
+[ext_resource type="Script" uid="uid://eo16y7gvlqrg" path="res://scenes/main_screen.gd" id="1_lushf"]
+[ext_resource type="Texture2D" uid="uid://xybfh2gp6ysh" path="res://temp/hand.png" id="4_w87pm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scqhg"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(7776, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kusfh"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(0, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aum10"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(648, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lushf"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(1296, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w87pm"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(1944, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a46j4"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(2592, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23dc1"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(3240, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il54y"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(3888, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4takm"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(4536, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn685"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(5184, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u38ol"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(5832, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_352yk"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(6480, 0, 648, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnhpx"]
+atlas = ExtResource("1_7fvvs")
+region = Rect2(7128, 0, 648, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scqhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scqhg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_kusfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aum10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lushf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w87pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a46j4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_23dc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il54y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4takm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn685")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u38ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_352yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnhpx")
+}],
+"loop": false,
+"name": &"rise",
+"speed": 24.0
+}]
+
+[node name="Control" type="Control" unique_id=777959393]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lushf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1965456914]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kusfh")
+
+[node name="Stickman" type="Control" parent="." unique_id=389217196]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stickman" unique_id=1513270587]
+position = Vector2(828, 325)
+sprite_frames = SubResource("SpriteFrames_scqhg")
+animation = &"idle"
+autoplay = "rise"
+
+[node name="HandTest" type="Node2D" parent="Stickman" unique_id=970088956]
+position = Vector2(809, 328)
+rotation = -1.5707964
+
+[node name="Hand" type="Node2D" parent="Stickman" unique_id=966730562]
+visible = false
+position = Vector2(809, 328)
+rotation = -1.5707964
+
+[node name="HandTexture" type="TextureRect" parent="Stickman/Hand" unique_id=29344385]
+offset_left = -45.00003
+offset_top = -97.0
+offset_right = 54.99997
+offset_bottom = 3.0
+texture = ExtResource("4_w87pm")
+
+[connection signal="animation_finished" from="Stickman/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

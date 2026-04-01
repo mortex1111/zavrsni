@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://vkhi7uroy7kk"]
+[gd_scene format=3 uid="uid://vkhi7uroy7kk"]
 
 [ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="3_h8bpr"]
 [ext_resource type="Texture2D" uid="uid://b42rafvv40kfb" path="res://map1/Project (20260331115822).png" id="8_w83sa"]
@@ -224,120 +224,123 @@ size = Vector2(2246.5, 767)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgtpt"]
 size = Vector2(407.25, 1206)
 
-[node name="Start" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvu0d"]
+size = Vector2(2727.6, 767)
 
-[node name="Player" parent="." instance=ExtResource("3_h8bpr")]
+[node name="Start" type="Node2D" unique_id=1579858107]
+
+[node name="Player" parent="." unique_id=707702669 instance=ExtResource("3_h8bpr")]
 position = Vector2(1465, 89.000015)
 collision_layer = 128
 
-[node name="Astronaut" parent="." instance=ExtResource("19_6aso7")]
-position = Vector2(1338, -235)
+[node name="Astronaut" parent="." unique_id=1736277257 instance=ExtResource("19_6aso7")]
+position = Vector2(347, -552)
 radius = 500.0
 
-[node name="miniKiklop" type="CharacterBody2D" parent="."]
+[node name="miniKiklop" type="CharacterBody2D" parent="." unique_id=895212465]
 position = Vector2(1879, 149)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("21_u8ib0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="miniKiklop"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="miniKiklop" unique_id=283791564]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ufqis")
 animation = &"dmg"
 offset = Vector2(25, 0)
 flip_h = true
 
-[node name="body" type="CollisionShape2D" parent="miniKiklop"]
+[node name="body" type="CollisionShape2D" parent="miniKiklop" unique_id=577548072]
 position = Vector2(9, -3.5)
 shape = SubResource("RectangleShape2D_5oev5")
 
-[node name="Turn" type="Area2D" parent="miniKiklop"]
+[node name="Turn" type="Area2D" parent="miniKiklop" unique_id=606315430]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn" unique_id=1472658559]
 position = Vector2(-70, -20)
 shape = SubResource("RectangleShape2D_u8ib0")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn" unique_id=902918530]
 position = Vector2(89, -16)
 shape = SubResource("RectangleShape2D_u8ib0")
 
-[node name="Turn2" type="Area2D" parent="miniKiklop"]
+[node name="Turn2" type="Area2D" parent="miniKiklop" unique_id=1365454989]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn2" unique_id=1881573147]
 position = Vector2(87, 122)
 shape = SubResource("RectangleShape2D_fbyx8")
 
-[node name="Turn3" type="Area2D" parent="miniKiklop"]
+[node name="Turn3" type="Area2D" parent="miniKiklop" unique_id=1287621310]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn3" unique_id=451733915]
 position = Vector2(-68, 121)
 shape = SubResource("RectangleShape2D_fbyx8")
 
-[node name="RayCast2D" type="RayCast2D" parent="miniKiklop"]
+[node name="RayCast2D" type="RayCast2D" parent="miniKiklop" unique_id=205928505]
 position = Vector2(10, -72)
 target_position = Vector2(-282, 16)
 collision_mask = 16
 
-[node name="RayCast2D2" type="RayCast2D" parent="miniKiklop"]
+[node name="RayCast2D2" type="RayCast2D" parent="miniKiklop" unique_id=799227961]
 position = Vector2(10, -72)
 target_position = Vector2(-282, 16)
 collision_mask = 128
 
-[node name="Attack" type="Area2D" parent="miniKiklop"]
+[node name="Attack" type="Area2D" parent="miniKiklop" unique_id=240964590]
 editor_description = "1"
 collision_layer = 4
 collision_mask = 0
 
-[node name="left" type="CollisionShape2D" parent="miniKiklop/Attack"]
+[node name="left" type="CollisionShape2D" parent="miniKiklop/Attack" unique_id=250712297]
 position = Vector2(-71.875, 6.5)
 shape = SubResource("RectangleShape2D_4ujb2")
 disabled = true
 
-[node name="right" type="CollisionShape2D" parent="miniKiklop/Attack"]
+[node name="right" type="CollisionShape2D" parent="miniKiklop/Attack" unique_id=1218187691]
 position = Vector2(83.0625, 7)
 shape = SubResource("RectangleShape2D_4ujb2")
 disabled = true
 
-[node name="dmgArea" type="Area2D" parent="miniKiklop"]
+[node name="dmgArea" type="Area2D" parent="miniKiklop" unique_id=1244431358]
 collision_layer = 8
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/dmgArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/dmgArea" unique_id=605374758]
 position = Vector2(8.5, -2.5)
 shape = SubResource("RectangleShape2D_y0jtq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1314287724]
 position = Vector2(1080, -370)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_w83sa")
 
-[node name="map" type="StaticBody2D" parent="Sprite2D"]
+[node name="map" type="StaticBody2D" parent="Sprite2D" unique_id=2128256402]
 position = Vector2(-1800, 616.6666)
 scale = Vector2(1.6666666, 1.6666666)
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/map"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1174833452]
 position = Vector2(1078.75, 860)
 shape = SubResource("RectangleShape2D_jei4c")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/map"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/map" unique_id=636736034]
 position = Vector2(-496, -251)
 shape = SubResource("RectangleShape2D_fgtpt")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/map"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1464436297]
 position = Vector2(2638, -285.99997)
 shape = SubResource("RectangleShape2D_fgtpt")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/map"]
-position = Vector2(1110, -1568.8002)
-shape = SubResource("RectangleShape2D_jei4c")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1075519691]
+position = Vector2(1078.2001, -1403.1997)
+shape = SubResource("RectangleShape2D_qvu0d")
 
 [connection signal="body_entered" from="miniKiklop/Turn" to="miniKiklop" method="_on_turn_body_entered"]
 [connection signal="body_exited" from="miniKiklop/Turn2" to="miniKiklop" method="_on_turn_2_body_exited"]
