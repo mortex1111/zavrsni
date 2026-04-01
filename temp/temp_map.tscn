@@ -225,7 +225,7 @@ size = Vector2(2246.5, 767)
 size = Vector2(407.25, 1206)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvu0d"]
-size = Vector2(2727.6, 767)
+size = Vector2(2246.5, 767)
 
 [node name="Start" type="Node2D" unique_id=1579858107]
 

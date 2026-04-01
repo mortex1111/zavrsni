@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_kusfh"]
 [ext_resource type="Script" uid="uid://eo16y7gvlqrg" path="res://scenes/main_screen.gd" id="1_lushf"]
 [ext_resource type="Texture2D" uid="uid://xybfh2gp6ysh" path="res://temp/hand.png" id="4_w87pm"]
+[ext_resource type="FontFile" uid="uid://bubfahpkpj5gx" path="res://thesead/Thesead.ttf" id="5_w87pm"]
+[ext_resource type="Texture2D" uid="uid://d21w3ld5mcmi2" path="res://temp/main_menu_background.png" id="6_a46j4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scqhg"]
 atlas = ExtResource("1_7fvvs")
@@ -68,13 +70,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 4.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kusfh")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_aum10")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_lushf")
 }, {
 "duration": 1.0,
@@ -83,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a46j4")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_23dc1")
 }, {
 "duration": 1.0,
@@ -109,7 +111,16 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="Control" type="Control" unique_id=777959393]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lushf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[node name="main_screen" type="Control" unique_id=777959393 groups=["Scene"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,6 +128,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lushf")
+main_level = "res://temp/temp_map.tscn"
+settings_scene = "res://scenes/settings_menu.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1965456914]
 layout_mode = 1
@@ -127,6 +140,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_kusfh")
 
+[node name="Explosion" type="TextureRect" parent="." unique_id=1241767836]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 2304.0
+offset_bottom = 648.0
+texture = ExtResource("6_a46j4")
+expand_mode = 1
+
 [node name="Stickman" type="Control" parent="." unique_id=389217196]
 anchors_preset = 0
 offset_right = 40.0
@@ -135,7 +156,7 @@ offset_bottom = 40.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stickman" unique_id=1513270587]
 position = Vector2(828, 325)
 sprite_frames = SubResource("SpriteFrames_scqhg")
-animation = &"idle"
+animation = &"rise"
 autoplay = "rise"
 
 [node name="HandTest" type="Node2D" parent="Stickman" unique_id=970088956]
@@ -154,4 +175,52 @@ offset_right = 54.99997
 offset_bottom = 3.0
 texture = ExtResource("4_w87pm")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1595864342]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 120.0
+offset_right = 410.0
+offset_bottom = 594.0
+theme_override_constants/separation = 50
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=314961818]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w87pm")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_lushf")
+text = "Start"
+
+[node name="Stats" type="Button" parent="VBoxContainer" unique_id=1182089382]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w87pm")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_lushf")
+text = "Stats"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=1963718035]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w87pm")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_lushf")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="VBoxContainer" unique_id=1711817680]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_w87pm")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_lushf")
+text = "Exit"
+
 [connection signal="animation_finished" from="Stickman/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="button_down" from="VBoxContainer/Start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="VBoxContainer/Stats" to="." method="_on_stats_button_down"]
+[connection signal="button_down" from="VBoxContainer/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="VBoxContainer/Exit" to="." method="_on_exit_button_down"]

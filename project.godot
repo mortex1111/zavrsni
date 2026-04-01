@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="zavrsni"
-run/main_scene="res://temp/temp_map.tscn"
+run/main_scene="uid://d0l13cguh585a"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://temp/icon.svg"
 
@@ -27,6 +27,10 @@ settings/stdout/print_fps=true
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
+
+[global_group]
+
+Scene=""
 
 [input]
 

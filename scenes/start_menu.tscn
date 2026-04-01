@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://bxo5o41kl33aw"]
 
+[ext_resource type="Script" uid="uid://cyfy220mt0ixh" path="res://scenes/start_menu.gd" id="1_m7x51"]
 [ext_resource type="Texture2D" uid="uid://bxwmp4ctj1x0k" path="res://temp/mainscreen.png" id="1_ouf4f"]
 [ext_resource type="FontFile" uid="uid://bubfahpkpj5gx" path="res://thesead/Thesead.ttf" id="2_thu50"]
 
-[node name="StartMenu" type="Control" unique_id=301269991]
+[node name="StartMenu" type="Control" unique_id=301269991 groups=["Scene"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_m7x51")
+main_screen = "res://scenes/main_screen.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1264644093]
 layout_mode = 0
