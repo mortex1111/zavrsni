@@ -2,6 +2,10 @@ extends Control
 
 var current_scene 
 
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("air_dodge"):
+		print("gay")
+
 func _ready() -> void:
 	for child in get_children():
 		if child.is_in_group("Scene"):

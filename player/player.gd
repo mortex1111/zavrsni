@@ -73,7 +73,7 @@ func is_hanging():
 func move_character(delta: float) -> void:
 	if dmgLen < 0:
 		if !is_dodging:
-			direction = Input.get_axis("ui_left", "ui_right")
+			direction = Input.get_axis("left", "right")
 		if hanging:
 			is_dodging = false
 			hang_timer2 -= delta
@@ -113,11 +113,11 @@ func move_character(delta: float) -> void:
 			velocity.x = 0
 			is_dodging = false
 
-		if Input.is_action_just_pressed("ui_accept") and !is_dodging:
+		if Input.is_action_just_pressed("jump") and !is_dodging:
 			jumpBufferTimer = jump_buffer_time
 		if jumpBufferTimer > 0 and can_jump() and !hanging:
 			start_jump()
-		if Input.is_action_just_released("ui_accept") and is_jumping and velocity.y < jump_cutoff:
+		if Input.is_action_just_released("jump") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
 	else:
 		var collision = move_and_collide(velocity * delta)

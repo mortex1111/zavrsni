@@ -26,7 +26,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_start_button_down() -> void:
 	var move_anim = get_tree().create_tween().tween_property($Explosion,"position",Vector2(0,0),0.5)
-	var hand_anim = get_tree().create_tween().tween_property(hand,"rotation_degrees",0,0.2) 
+	var hand_anim = get_tree().create_tween().tween_property(hand,"rotation_degrees",hand.rotation_degrees+90,0.1) 
 	self.process_mode = Node.PROCESS_MODE_DISABLED
 	await move_anim.finished
 	get_parent().switch_scenes(main_level)
@@ -39,7 +39,7 @@ func _on_stats_button_down() -> void:
 
 func _on_settings_button_down() -> void:
 	var move_anim = get_tree().create_tween().tween_property($Explosion,"position",Vector2(0,0),0.5)
-	var hand_anim = get_tree().create_tween().tween_property(hand,"rotation_degrees",0,0.2) 
+	var hand_anim = get_tree().create_tween().tween_property(hand,"rotation_degrees",hand.rotation_degrees+90,0.1) 
 	self.process_mode = Node.PROCESS_MODE_DISABLED
 	await move_anim.finished
 	get_parent().switch_scenes(settings_scene)
@@ -47,7 +47,7 @@ func _on_settings_button_down() -> void:
 
 func _on_exit_button_down() -> void:
 	var move_anim = get_tree().create_tween().tween_property($Explosion,"position",Vector2(0,0),0.5)
-	hand.rotation_degrees = 0
+	var hand_anim = get_tree().create_tween().tween_property(hand,"rotation_degrees",hand.rotation_degrees+90,0.1) 
 	self.process_mode = Node.PROCESS_MODE_DISABLED
 	await move_anim.finished
 	get_tree().quit()

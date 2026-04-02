@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://bevgn1oo21dyx"]
 
+[ext_resource type="Script" uid="uid://ck2rhpolqfyo6" path="res://scenes/settings_menu.gd" id="1_05p07"]
+[ext_resource type="FontFile" uid="uid://bubfahpkpj5gx" path="res://thesead/Thesead.ttf" id="2_cr101"]
+[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="2_wswnh"]
+[ext_resource type="PackedScene" uid="uid://b6nuqyq1yp1i7" path="res://scenes/input_scene.tscn" id="4_labj1"]
+
 [node name="settings_menu" type="Control" unique_id=45121485]
 layout_mode = 3
 anchors_preset = 15
@@ -7,12 +12,133 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_05p07")
+main_screen = "res://scenes/main_screen.tscn"
 
-[node name="Label" type="Label" parent="." unique_id=918847792 groups=["Scene"]]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1660634970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wswnh")
+
+[node name="MusicAndSounds" type="VBoxContainer" parent="." unique_id=1662504559]
 layout_mode = 0
-offset_left = 448.0
-offset_top = 200.0
-offset_right = 805.0
-offset_bottom = 283.0
-theme_override_font_sizes/font_size = 60
-text = "TO BE DONE"
+offset_left = 30.0
+offset_top = 96.0
+offset_right = 435.0
+offset_bottom = 351.0
+theme_override_constants/separation = 10
+
+[node name="Music and sounds" type="Label" parent="MusicAndSounds" unique_id=1018673309]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 40
+text = "Music and sounds"
+
+[node name="Master3" type="Label" parent="MusicAndSounds" unique_id=2115143494]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="Master" type="HSlider" parent="MusicAndSounds" unique_id=1617694959]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Music2" type="Label" parent="MusicAndSounds" unique_id=1676797050]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 25
+text = "Music"
+
+[node name="Music" type="HSlider" parent="MusicAndSounds" unique_id=728967961]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="SFX2" type="Label" parent="MusicAndSounds" unique_id=1781326869]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 25
+text = "Sound effects"
+
+[node name="SFX" type="HSlider" parent="MusicAndSounds" unique_id=2115632068]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label" type="Label" parent="." unique_id=1961076015]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.5
+offset_right = 100.5
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Label2" type="Label" parent="." unique_id=1338966931]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 227.0
+offset_top = 96.0
+offset_right = 428.0
+offset_bottom = 152.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 40
+text = "Controls"
+
+[node name="Controls2" type="ScrollContainer" parent="." unique_id=1554900545]
+layout_mode = 0
+offset_left = 803.0
+offset_top = 155.0
+offset_right = 1130.0
+offset_bottom = 398.0
+scroll_hint_mode = 1
+tile_scroll_hint = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Controls2" unique_id=430433996]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls2/PanelContainer" unique_id=1211528422]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls2/PanelContainer/MarginContainer" unique_id=2115243543]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Input" parent="Controls2/PanelContainer/MarginContainer/VBoxContainer" unique_id=6875495 instance=ExtResource("4_labj1")]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[connection signal="value_changed" from="MusicAndSounds/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="MusicAndSounds/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MusicAndSounds/SFX" to="." method="_on_sfx_value_changed"]

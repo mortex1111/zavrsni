@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bn1o3txh2pdk7"]
+[gd_scene format=3 uid="uid://bn1o3txh2pdk7"]
 
 [ext_resource type="Script" uid="uid://gg6rt47r6p0w" path="res://player/player.gd" id="1_smehm"]
 [ext_resource type="Texture2D" uid="uid://b7qqai14qhfsh" path="res://temp/temp.png" id="2_ur7pv"]
@@ -375,17 +375,17 @@ size = Vector2(183.75, 237.49998)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
 size = Vector2(110.00007, 165.00003)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=810777590 groups=["Player"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_smehm")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=3952154]
 position = Vector2(0, -100)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=435246299]
 texture_filter = 2
 position = Vector2(-23, 1)
 texture = ExtResource("2_ur7pv")
@@ -393,48 +393,46 @@ offset = Vector2(45, 0)
 flip_h = true
 hframes = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=951958555]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_a42rq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jei4c")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1570453300]
+libraries/ = SubResource("AnimationLibrary_jei4c")
 
-[node name="attack" type="Area2D" parent="."]
+[node name="attack" type="Area2D" parent="." unique_id=579230784]
 editor_description = "1"
 collision_layer = 2
 collision_mask = 8
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="attack"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="attack" unique_id=566944386]
 position = Vector2(136.87498, -16.249989)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_jyy20")
 
-[node name="Lgrab" type="RayCast2D" parent="."]
+[node name="Lgrab" type="RayCast2D" parent="." unique_id=946199516]
 position = Vector2(47.499996, -65)
 target_position = Vector2(52.5, 0)
 collision_mask = 16
 hit_from_inside = true
 
-[node name="CheckUp" type="RayCast2D" parent="."]
+[node name="CheckUp" type="RayCast2D" parent="." unique_id=1227534738]
 position = Vector2(100, -80)
 scale = Vector2(0.99999994, 0.99999994)
 target_position = Vector2(0, -160)
 collision_mask = 16
 hit_from_inside = true
 
-[node name="dmgHitbox" type="Area2D" parent="."]
+[node name="dmgHitbox" type="Area2D" parent="." unique_id=1843135014]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dmgHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmgHitbox" unique_id=94485823]
 position = Vector2(1.2499985, 17.499989)
 scale = Vector2(0.9999992, 0.9999992)
 shape = SubResource("RectangleShape2D_y4r1p")
 
-[node name="grabMarker" type="Marker2D" parent="."]
+[node name="grabMarker" type="Marker2D" parent="." unique_id=1448989696]
 position = Vector2(47.5, -52.5)
 
 [connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]
