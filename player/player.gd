@@ -41,9 +41,11 @@ var hanging = false
 var can_move = true
 var is_dodging = false
 var can_dodge = true
+var velSave
 var last_dir = -1
 
 func _physics_process(delta: float) -> void:
+	velSave = velocity
 	is_hanging()
 	timers(delta)
 	move_character(delta)
@@ -122,6 +124,7 @@ func move_character(delta: float) -> void:
 		if collision != null:
 			var normal = collision.get_normal()
 			print(normal)
+			velocity = velSave
 			if normal.x != 0:
 				velocity.x *= -1
 			if normal.y != 0:

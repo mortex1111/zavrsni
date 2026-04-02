@@ -16,8 +16,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="zavrsni"
 run/main_scene="uid://d0l13cguh585a"
-config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://temp/icon.svg"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="uid://cxup2fecd4tss"
 
 [debug]
 
