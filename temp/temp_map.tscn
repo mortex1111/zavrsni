@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://vkhi7uroy7kk"]
 
 [ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="3_h8bpr"]
+[ext_resource type="Script" uid="uid://bjbh7w3e77xdo" path="res://Enemies/caveman/cave_man.gd" id="8_jei4c"]
 [ext_resource type="Texture2D" uid="uid://b42rafvv40kfb" path="res://map1/Project (20260331115822).png" id="8_w83sa"]
+[ext_resource type="Texture2D" uid="uid://crln227jewe3u" path="res://Enemies/caveman/Rockthrow (20260402111153).png" id="9_fgtpt"]
 [ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="19_6aso7"]
 [ext_resource type="Texture2D" uid="uid://7yhbe4s6cl67" path="res://Enemies/miniKiklop/attack (20251228091842).png" id="21_jyy20"]
 [ext_resource type="Script" uid="uid://bf7gd2rlil42o" path="res://temp/mini_kiklop.gd" id="21_u8ib0"]
@@ -204,7 +206,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5oev5"]
-size = Vector2(120, 173)
+size = Vector2(117, 284)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8ib0"]
 size = Vector2(15, 179.5)
@@ -216,7 +218,7 @@ size = Vector2(15, 36.5)
 size = Vector2(161.875, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0jtq"]
-size = Vector2(117, 173)
+size = Vector2(118, 281.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(2246.5, 767)
@@ -224,8 +226,93 @@ size = Vector2(2246.5, 767)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgtpt"]
 size = Vector2(407.25, 1206)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvu0d"]
-size = Vector2(2246.5, 767)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysnn6"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rgbs"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(1638, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsaoi"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(2457, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ophho"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(819, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soer2"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(3276, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ieth"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(4095, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0dpa"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8bpr"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(819, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aso7"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(1638, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31fwx"]
+atlas = ExtResource("9_fgtpt")
+region = Rect2(2457, 0, 819, 819)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_diaxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysnn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rgbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsaoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ophho")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_soer2")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ieth")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0dpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8bpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aso7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31fwx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Start" type="Node2D" unique_id=1579858107]
 
@@ -238,15 +325,16 @@ position = Vector2(347, -552)
 radius = 500.0
 
 [node name="miniKiklop" type="CharacterBody2D" parent="." unique_id=895212465]
-position = Vector2(1879, 149)
+position = Vector2(1851, 196)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("21_u8ib0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="miniKiklop" unique_id=283791564]
-scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ufqis")
 animation = &"dmg"
+frame = 6
+frame_progress = 1.0
 offset = Vector2(25, 0)
 flip_h = true
 
@@ -312,7 +400,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/dmgArea" unique_id=605374758]
-position = Vector2(8.5, -2.5)
+position = Vector2(8.5, -2.75)
 shape = SubResource("RectangleShape2D_y0jtq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1314287724]
@@ -338,11 +426,36 @@ shape = SubResource("RectangleShape2D_fgtpt")
 position = Vector2(2638, -285.99997)
 shape = SubResource("RectangleShape2D_fgtpt")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1075519691]
-position = Vector2(1078.2001, -1403.1997)
-shape = SubResource("RectangleShape2D_qvu0d")
+[node name="CaveMan" type="CharacterBody2D" parent="." unique_id=1164722434]
+position = Vector2(394.00003, 143)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("8_jei4c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CaveMan" unique_id=802679764]
+sprite_frames = SubResource("SpriteFrames_diaxa")
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
+
+[node name="body" type="CollisionShape2D" parent="CaveMan" unique_id=232676523]
+position = Vector2(25.5, 2)
+shape = SubResource("RectangleShape2D_5oev5")
+
+[node name="dmgArea" type="Area2D" parent="CaveMan" unique_id=1571407314]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveMan/dmgArea" unique_id=1802476274]
+position = Vector2(25, 2)
+shape = SubResource("RectangleShape2D_y0jtq")
+
+[node name="Timer" type="Timer" parent="CaveMan" unique_id=1233319534]
+wait_time = 6.0
+autostart = true
 
 [connection signal="body_entered" from="miniKiklop/Turn" to="miniKiklop" method="_on_turn_body_entered"]
 [connection signal="body_exited" from="miniKiklop/Turn2" to="miniKiklop" method="_on_turn_2_body_exited"]
 [connection signal="body_exited" from="miniKiklop/Turn3" to="miniKiklop" method="_on_turn_2_body_exited"]
 [connection signal="area_entered" from="miniKiklop/dmgArea" to="miniKiklop" method="_on_dmg_area_area_entered"]
+[connection signal="area_entered" from="CaveMan/dmgArea" to="CaveMan" method="_on_dmg_area_area_entered"]
+[connection signal="timeout" from="CaveMan/Timer" to="CaveMan" method="_on_timer_timeout"]

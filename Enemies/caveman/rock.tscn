@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://34la21o3lswg"]
+
+[ext_resource type="Script" uid="uid://ci6cii5drcx3l" path="res://Enemies/caveman/rock.gd" id="1_holr8"]
+[ext_resource type="Texture2D" uid="uid://d1v6fywdw3srv" path="res://Enemies/caveman/Rock (20260402111256).png" id="2_ucpik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wsaoi"]
+radius = 66.068146
+
+[node name="rock" type="CharacterBody2D" unique_id=101656328]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_holr8")
+
+[node name="Rock" type="Area2D" parent="." unique_id=50196054]
+editor_description = "1"
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock" unique_id=1781526868]
+shape = SubResource("CircleShape2D_wsaoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1683399850]
+texture = ExtResource("2_ucpik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1559606787]
+shape = SubResource("CircleShape2D_wsaoi")
+
+[node name="dmgArea" type="Area2D" parent="." unique_id=737864507]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmgArea" unique_id=1285168121]
+shape = SubResource("CircleShape2D_wsaoi")
+
+[connection signal="area_entered" from="dmgArea" to="." method="_on_dmg_area_area_entered"]
