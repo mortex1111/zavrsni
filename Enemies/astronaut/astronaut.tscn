@@ -1,7 +1,33 @@
-[gd_scene load_steps=20 format=3 uid="uid://df7elar4sb17f"]
+[gd_scene format=3 uid="uid://df7elar4sb17f"]
 
 [ext_resource type="Texture2D" uid="uid://bsflorsb56iqk" path="res://Enemies/astronaut/sprites/shoot.png" id="1_lp7i4"]
 [ext_resource type="Script" uid="uid://d0b3jsfo08nen" path="res://Enemies/astronaut/astronaut.gd" id="1_rb6wy"]
+[ext_resource type="Texture2D" uid="uid://bbfix3rh1xjgm" path="res://Enemies/astronaut/sprites/astronaut_dmg.png" id="2_ohx4t"]
+[ext_resource type="Texture2D" uid="uid://c328issm5sie4" path="res://Enemies/astronaut/sprites/blackhole.png" id="4_f101j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxxvu"]
+atlas = ExtResource("2_ohx4t")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svuvb"]
+atlas = ExtResource("2_ohx4t")
+region = Rect2(819, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ellbn"]
+atlas = ExtResource("2_ohx4t")
+region = Rect2(1638, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7beo3"]
+atlas = ExtResource("2_ohx4t")
+region = Rect2(2457, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igadh"]
+atlas = ExtResource("2_ohx4t")
+region = Rect2(3276, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gg7n"]
+atlas = ExtResource("2_ohx4t")
+region = Rect2(4095, 0, 819, 819)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb6wy"]
 atlas = ExtResource("1_lp7i4")
@@ -47,6 +73,29 @@ region = Rect2(6552, 0, 819, 819)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rxxvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svuvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ellbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7beo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igadh")
+}, {
+"duration": 24.0,
+"texture": SubResource("AtlasTexture_8gg7n")
+}],
+"loop": false,
+"name": &"dmg",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rb6wy")
 }],
 "loop": true,
@@ -87,7 +136,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rb6wy"]
-size = Vector2(205, 306)
+size = Vector2(207, 307)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rb6wy"]
 radius = 789.1071
@@ -183,37 +232,51 @@ _data = {
 &"shoot": SubResource("Animation_rb6wy")
 }
 
-[node name="Astronaut" type="CharacterBody2D"]
+[node name="Astronaut" type="CharacterBody2D" unique_id=1692940574]
 collision_layer = 0
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_rb6wy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=989654766]
 texture_filter = 2
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_rxxvu")
-animation = &"shoot"
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1257346056]
 position = Vector2(-15.5, -2)
 shape = SubResource("RectangleShape2D_rb6wy")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=82260298]
 collision_layer = 0
 collision_mask = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=540542897]
 visible = false
 shape = SubResource("CircleShape2D_rb6wy")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1784797008]
 position = Vector2(-125, -29)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4bfli")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=640701947]
+libraries/ = SubResource("AnimationLibrary_4bfli")
 
+[node name="dmg" type="Area2D" parent="." unique_id=2026438073]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmg" unique_id=1305823416]
+position = Vector2(-14.5, -1.5)
+shape = SubResource("RectangleShape2D_rb6wy")
+
+[node name="Blackhole" type="Sprite2D" parent="." unique_id=1551066639]
+visible = false
+position = Vector2(-1, -20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_f101j")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="dmg" to="." method="_on_dmg_area_entered"]

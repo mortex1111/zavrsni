@@ -8,7 +8,9 @@ var projectile = preload("res://Enemies/astronaut/astronaut_projectile.tscn")
 @export var shoot_delay: float = 4.0
 @export var radius: float = 400.0
 @export var speed: float = 75
+@export var HP = 3
 
+var can_move = true
 var shoot_timer: float = 0.0
 var player_in_range = false
 var traveling = false
@@ -26,24 +28,30 @@ func find_next_pos():
 
 
 func _physics_process(delta: float) -> void:
-	
-	if player_in_range and shoot_timer >= shoot_delay:
-		$AnimationPlayer.play("shoot")
-		shoot_timer = 0.0
-	else:
-		shoot_timer += delta
+	$Blackhole.global_rotation = 0
+	$Blackhole.global_scale = Vector2(0.25,0.25)
+	if can_move:
+		if player_in_range and shoot_timer >= shoot_delay:
+			$AnimationPlayer.play("shoot")
+			shoot_timer = 0.0
+		else:
+			shoot_timer += delta
 
-	if !traveling:
-		find_next_pos()
-		traveling = true
-	
-	if traveling:
-		global_position = global_position.move_toward(next_pos, speed * delta)
+		if !traveling:
+			find_next_pos()
+			traveling = true
+		
+		if traveling:
+			global_position = global_position.move_toward(next_pos, speed * delta)
 
-	if global_position == next_pos:
-		find_next_pos()
-	
-	move_and_slide()
+		if global_position == next_pos:
+			find_next_pos()
+		
+		move_and_slide()
+
+
+
+
 
 func shoot():
 	var projectile_instance = projectile.instantiate()
@@ -57,3 +65,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player") :
 		player_in_range = false
+
+func _on_dmg_area_entered(area: Area2D) -> void:
+	if !animated_sprite_2d.animation == "dmg":
+		HP -= int(area.editor_description)
+		can_move = false
+		$AnimatedSprite2D.play("dmg")
+	if HP < 1:
+		$Blackhole.visible = true
+		var rotate_anim = get_tree().create_tween().tween_property(self,"rotation_degrees",360,0.7)
+		var scale_anim = get_tree().create_tween().tween_property(self,"scale",Vector2(0,0),0.7) 
+		await scale_anim.finished 
+		queue_free()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "dmg":
+		can_move = true
+		animated_sprite_2d.play("idle")

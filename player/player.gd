@@ -56,8 +56,8 @@ func _physics_process(delta: float) -> void:
 
 func is_hanging():
 	if lgrab.is_colliding() and !hanging and hang_timer1 <= 0.0:
-		if lgrab.get_collider().name == "map":
-			if !check_up.is_colliding():
+		if !check_up.is_colliding():
+			if lgrab.get_collider().name == "map":
 				velocity = Vector2.ZERO
 				var grab_position_x
 				if last_dir == -1:
@@ -198,15 +198,15 @@ func animations():
 		$Sprite2D.offset.x = 0
 		$attack/CollisionShape2D2.position = abs($attack/CollisionShape2D2.position)
 		$Lgrab.position = Vector2(47.5, -65)
-		$Lgrab.target_position.x = 52.5
-		$CheckUp.position = Vector2(100, -80)
+		$Lgrab.target_position.x = 120.0
+		$CheckUp.position = Vector2(170.0, -100.75)
 	else:
 		$Sprite2D.flip_h = true
 		$Sprite2D.offset.x = 45
 		$attack/CollisionShape2D2.position = abs($attack/CollisionShape2D2.position) * -1
 		$Lgrab.position = Vector2(-47.5, -65)
-		$Lgrab.target_position.x = -52.5
-		$CheckUp.position = Vector2(-100, -80)
+		$Lgrab.target_position.x = -120.0
+		$CheckUp.position = Vector2(-170.0, -100.75)
 	
 	if invizLen > 0:
 		modulate = Color(1,0,0, 0.5)

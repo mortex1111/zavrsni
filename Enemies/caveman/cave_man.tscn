@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://8hpxdx4qnrw8"]
+
+[ext_resource type="Script" uid="uid://bjbh7w3e77xdo" path="res://Enemies/caveman/cave_man.gd" id="1_ufx3m"]
+[ext_resource type="Texture2D" uid="uid://crln227jewe3u" path="res://Enemies/caveman/Rockthrow (20260402111153).png" id="2_u6ey1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysnn6"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rgbs"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(1638, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsaoi"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(2457, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ophho"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(819, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soer2"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(3276, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ieth"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(4095, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0dpa"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(0, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8bpr"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(819, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aso7"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(1638, 0, 819, 819)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31fwx"]
+atlas = ExtResource("2_u6ey1")
+region = Rect2(2457, 0, 819, 819)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_diaxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysnn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rgbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsaoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ophho")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_soer2")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ieth")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0dpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8bpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aso7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31fwx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oev5"]
+size = Vector2(117, 284)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0jtq"]
+size = Vector2(118, 281.5)
+
+[node name="CaveMan" type="CharacterBody2D" unique_id=249602203]
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_ufx3m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=348696312]
+sprite_frames = SubResource("SpriteFrames_diaxa")
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
+
+[node name="body" type="CollisionShape2D" parent="." unique_id=2022243298]
+position = Vector2(25.5, 2)
+shape = SubResource("RectangleShape2D_5oev5")
+
+[node name="dmgArea" type="Area2D" parent="." unique_id=190513013]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmgArea" unique_id=418228890]
+position = Vector2(25, 2)
+shape = SubResource("RectangleShape2D_y0jtq")
+
+[node name="Timer" type="Timer" parent="." unique_id=1302879881]
+wait_time = 6.0
+autostart = true
+
+[connection signal="area_entered" from="dmgArea" to="." method="_on_dmg_area_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
