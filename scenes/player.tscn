@@ -418,7 +418,7 @@ collision_mask = 16
 hit_from_inside = true
 
 [node name="CheckUp" type="RayCast2D" parent="." unique_id=995986628]
-position = Vector2(145, -123.749985)
+position = Vector2(147.5, -146.24998)
 scale = Vector2(9.999999, 0.99999994)
 target_position = Vector2(0, -70)
 collision_mask = 16

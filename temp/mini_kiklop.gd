@@ -4,7 +4,7 @@ var HP = 3
 var attacking = false 
 var tempAttacking = false 
 var dir = -1
-var hurting = 1
+var hurting = 0
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
@@ -14,10 +14,10 @@ func _physics_process(delta: float) -> void:
 	if hurting > 0:
 		dmgTake(delta)
 	elif !attacking:
-		$AnimatedSprite2D.scale = Vector2(0.8, 0.8)
+		$AnimatedSprite2D.scale = Vector2(1.3, 1.3)
 		move()
 	else:
-		$AnimatedSprite2D.scale = Vector2(0.8, 0.8)
+		$AnimatedSprite2D.scale = Vector2(1.3, 1.3)
 		attack()
 	move_and_slide()
 
@@ -37,7 +37,7 @@ func dmgTake(delta: float):
 	hurting -= delta
 	$Attack.monitorable = false
 	velocity.x = 0
-	$AnimatedSprite2D.scale = Vector2(0.5, 0.5)
+	$AnimatedSprite2D.scale = Vector2(0.8, 0.8)
 
 func move():
 	$Attack/right.disabled = true

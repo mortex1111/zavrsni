@@ -1,223 +1,12 @@
 [gd_scene format=3 uid="uid://vkhi7uroy7kk"]
 
+[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_d72yr"]
 [ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="3_h8bpr"]
-[ext_resource type="PackedScene" uid="uid://8hpxdx4qnrw8" path="res://Enemies/caveman/cave_man.tscn" id="8_jei4c"]
+[ext_resource type="Script" uid="uid://6l4gjp5hxrwn" path="res://Enemies/ballGuy/ball.gd" id="3_khc88"]
+[ext_resource type="Texture2D" uid="uid://v0vfpgu6s26c" path="res://Enemies/ballGuy/F1 Base (20260403065519).png" id="4_d72yr"]
+[ext_resource type="Script" uid="uid://bwxs17vfh4aha" path="res://Enemies/ballGuy/ballFly.gd" id="4_qvu0d"]
+[ext_resource type="Texture2D" uid="uid://d384diirmaey" path="res://Enemies/ballGuy/F1 w (20260403065557).png" id="6_w83sa"]
 [ext_resource type="Texture2D" uid="uid://b42rafvv40kfb" path="res://map1/Project (20260331115822).png" id="8_w83sa"]
-[ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="19_6aso7"]
-[ext_resource type="Texture2D" uid="uid://7yhbe4s6cl67" path="res://Enemies/miniKiklop/attack (20251228091842).png" id="21_jyy20"]
-[ext_resource type="Script" uid="uid://bf7gd2rlil42o" path="res://temp/mini_kiklop.gd" id="21_u8ib0"]
-[ext_resource type="Texture2D" uid="uid://u3i32j68w1tq" path="res://Enemies/miniKiklop/Project (20251228092735).png" id="22_jyy20"]
-[ext_resource type="Texture2D" uid="uid://bssrjy6m6rav2" path="res://Enemies/miniKiklop/Project (20251230083028).png" id="22_u8ib0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufqis"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(0, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5oev5"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(819, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bki7e"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(1638, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ox6ec"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(2457, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_68lvr"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(3276, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oalhy"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(4095, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixubt"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(4914, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fshuq"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(5733, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvq7d"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(6552, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ats6y"]
-atlas = ExtResource("21_jyy20")
-region = Rect2(7371, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a42rq"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(0, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxv45"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(819, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckyeh"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(1638, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cliw"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(2457, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gv6va"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(3276, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vrns5"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(4095, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbyx8"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(4914, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ujb2"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(5733, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0jtq"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(6552, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhipo"]
-atlas = ExtResource("22_jyy20")
-region = Rect2(7371, 0, 819, 819)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jyy20"]
-atlas = ExtResource("22_u8ib0")
-region = Rect2(6825, 0, 1365, 1365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxiwj"]
-atlas = ExtResource("22_u8ib0")
-region = Rect2(5460, 0, 1365, 1365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ostn5"]
-atlas = ExtResource("22_u8ib0")
-region = Rect2(4095, 0, 1365, 1365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pffeu"]
-atlas = ExtResource("22_u8ib0")
-region = Rect2(2730, 0, 1365, 1365)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ufqis"]
-animations = [{
-"frames": [{
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_ufqis")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_5oev5")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_bki7e")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_ox6ec")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_68lvr")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_oalhy")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_ixubt")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_fshuq")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_lvq7d")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_ats6y")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_a42rq")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_xxv45")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_ckyeh")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_7cliw")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_gv6va")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_vrns5")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_fbyx8")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_4ujb2")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_y0jtq")
-}, {
-"duration": 0.56,
-"texture": SubResource("AtlasTexture_bhipo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_jyy20")
-}, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_rxiwj")
-}, {
-"duration": 0.6,
-"texture": SubResource("AtlasTexture_ostn5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pffeu")
-}, {
-"duration": 0.6,
-"texture": SubResource("AtlasTexture_ostn5")
-}, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_rxiwj")
-}, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_jyy20")
-}],
-"loop": false,
-"name": &"dmg",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oev5"]
-size = Vector2(117, 284)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8ib0"]
-size = Vector2(15, 179.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbyx8"]
-size = Vector2(15, 36.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ujb2"]
-size = Vector2(161.875, 115)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0jtq"]
-size = Vector2(118, 281.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(2246.5, 767)
@@ -225,94 +14,104 @@ size = Vector2(2246.5, 767)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgtpt"]
 size = Vector2(407.25, 1206)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsqjq"]
+radius = 59.008472
+
+[sub_resource type="Animation" id="Animation_jei4c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/wr:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6457718]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/wl:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.29670596]
+}
+
+[sub_resource type="Animation" id="Animation_fgtpt"]
+resource_name = "fly"
+length = 0.25
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/wr:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6457718, -0.34906584]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/wl:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23309568),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.29670596, 0.4712389]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.23333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"boost"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysnn6"]
+_data = {
+&"RESET": SubResource("Animation_jei4c"),
+&"fly": SubResource("Animation_fgtpt")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_khc88"]
+
 [node name="Start" type="Node2D" unique_id=1579858107]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1448132368]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -663.0
+offset_top = -1137.0
+offset_right = 2566.0
+offset_bottom = 1134.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d72yr")
 
 [node name="Player" parent="." unique_id=810777590 instance=ExtResource("3_h8bpr")]
 position = Vector2(1132.9999, 73.99999)
 collision_layer = 128
-
-[node name="Astronaut" parent="." unique_id=1736277257 instance=ExtResource("19_6aso7")]
-position = Vector2(883, 158)
-radius = 500.0
-
-[node name="miniKiklop" type="CharacterBody2D" parent="." unique_id=895212465]
-position = Vector2(1851, 196)
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("21_u8ib0")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="miniKiklop" unique_id=283791564]
-sprite_frames = SubResource("SpriteFrames_ufqis")
-animation = &"dmg"
-frame = 6
-frame_progress = 1.0
-offset = Vector2(25, 0)
-flip_h = true
-
-[node name="body" type="CollisionShape2D" parent="miniKiklop" unique_id=577548072]
-position = Vector2(9, -3.5)
-shape = SubResource("RectangleShape2D_5oev5")
-
-[node name="Turn" type="Area2D" parent="miniKiklop" unique_id=606315430]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn" unique_id=1472658559]
-position = Vector2(-70, -20)
-shape = SubResource("RectangleShape2D_u8ib0")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn" unique_id=902918530]
-position = Vector2(89, -16)
-shape = SubResource("RectangleShape2D_u8ib0")
-
-[node name="Turn2" type="Area2D" parent="miniKiklop" unique_id=1365454989]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="miniKiklop/Turn2" unique_id=1881573147]
-position = Vector2(87, 122)
-shape = SubResource("RectangleShape2D_fbyx8")
-
-[node name="Turn3" type="Area2D" parent="miniKiklop" unique_id=1287621310]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/Turn3" unique_id=451733915]
-position = Vector2(-68, 121)
-shape = SubResource("RectangleShape2D_fbyx8")
-
-[node name="RayCast2D" type="RayCast2D" parent="miniKiklop" unique_id=205928505]
-position = Vector2(10, -72)
-target_position = Vector2(-282, 16)
-collision_mask = 16
-
-[node name="RayCast2D2" type="RayCast2D" parent="miniKiklop" unique_id=799227961]
-position = Vector2(10, -72)
-target_position = Vector2(-282, 16)
-collision_mask = 128
-
-[node name="Attack" type="Area2D" parent="miniKiklop" unique_id=240964590]
-editor_description = "1"
-collision_layer = 4
-collision_mask = 0
-
-[node name="left" type="CollisionShape2D" parent="miniKiklop/Attack" unique_id=250712297]
-position = Vector2(-71.875, 6.5)
-shape = SubResource("RectangleShape2D_4ujb2")
-disabled = true
-
-[node name="right" type="CollisionShape2D" parent="miniKiklop/Attack" unique_id=1218187691]
-position = Vector2(83.0625, 7)
-shape = SubResource("RectangleShape2D_4ujb2")
-disabled = true
-
-[node name="dmgArea" type="Area2D" parent="miniKiklop" unique_id=1244431358]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="miniKiklop/dmgArea" unique_id=605374758]
-position = Vector2(8.5, -2.75)
-shape = SubResource("RectangleShape2D_y0jtq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1314287724]
 position = Vector2(1080, -370)
@@ -337,10 +136,91 @@ shape = SubResource("RectangleShape2D_fgtpt")
 position = Vector2(2638, -285.99997)
 shape = SubResource("RectangleShape2D_fgtpt")
 
-[node name="CaveMan" parent="." unique_id=249602203 instance=ExtResource("8_jei4c")]
-position = Vector2(394.00003, 143)
+[node name="ballFly" type="CharacterBody2D" parent="." unique_id=1090376815]
+position = Vector2(681, 109)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_qvu0d")
 
-[connection signal="body_entered" from="miniKiklop/Turn" to="miniKiklop" method="_on_turn_body_entered"]
-[connection signal="body_exited" from="miniKiklop/Turn2" to="miniKiklop" method="_on_turn_2_body_exited"]
-[connection signal="body_exited" from="miniKiklop/Turn3" to="miniKiklop" method="_on_turn_2_body_exited"]
-[connection signal="area_entered" from="miniKiklop/dmgArea" to="miniKiklop" method="_on_dmg_area_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ballFly" unique_id=32923773]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="Sprite2D" type="Sprite2D" parent="ballFly" unique_id=231147388]
+position = Vector2(6, -34)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_d72yr")
+
+[node name="wl" type="Sprite2D" parent="ballFly/Sprite2D" unique_id=115977162]
+position = Vector2(-500, 174.99994)
+rotation = -0.29670596
+texture = ExtResource("6_w83sa")
+flip_h = true
+
+[node name="wr" type="Sprite2D" parent="ballFly/Sprite2D" unique_id=798525902]
+position = Vector2(398.5703, 9.56665)
+rotation = 0.6457718
+texture = ExtResource("6_w83sa")
+
+[node name="dmgArea" type="Area2D" parent="ballFly" unique_id=1536850835]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ballFly/dmgArea" unique_id=697998531]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="attack" type="Area2D" parent="ballFly" unique_id=1761671776]
+editor_description = "1"
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ballFly/attack" unique_id=1000095542]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ballFly" unique_id=2113080912]
+libraries/ = SubResource("AnimationLibrary_ysnn6")
+
+[node name="ball" type="CharacterBody2D" parent="." unique_id=1254445261]
+position = Vector2(295, 265)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_khc88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball" unique_id=241941963]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="Sprite2D" type="Sprite2D" parent="ball" unique_id=963824662]
+position = Vector2(6, -34)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_d72yr")
+
+[node name="Timer" type="Timer" parent="ball" unique_id=1613919322]
+wait_time = 1.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="ball" unique_id=1816100904]
+position = Vector2(0, -16)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/Area2D" unique_id=1998578089]
+position = Vector2(1, 91)
+shape = SubResource("CircleShape2D_khc88")
+
+[node name="dmgArea" type="Area2D" parent="ball" unique_id=950049564]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/dmgArea" unique_id=542871964]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="attack" type="Area2D" parent="ball" unique_id=981565942]
+editor_description = "1"
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/attack" unique_id=1216143573]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[connection signal="area_entered" from="ballFly/dmgArea" to="ballFly" method="_on_dmg_area_area_entered"]
+[connection signal="timeout" from="ball/Timer" to="ball" method="_on_timer_timeout"]
+[connection signal="area_entered" from="ball/dmgArea" to="ball" method="_on_dmg_area_area_entered"]

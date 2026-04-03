@@ -18,8 +18,8 @@ func _physics_process(delta: float) -> void:
 		var projectile_instance = projectile.instantiate()
 		add_child(projectile_instance)
 		if $AnimatedSprite2D.flip_h == true:
-			projectile_instance.global_position = global_position + Vector2(-300, 3000)
-			#projectile_instance.velocity = Vector2(-20, randf_range(-1000, 1000)).normalized() * speed
+			projectile_instance.global_position = global_position + Vector2(-300, 200)
+			projectile_instance.velocity = Vector2(-200, randf_range(-1000, 1000)).normalized() * speed
 		else:
 			projectile_instance.global_position = global_position + Vector2(300, 200)
 			projectile_instance.velocity = Vector2(200, randf_range(-1000, 1000)).normalized() * speed
