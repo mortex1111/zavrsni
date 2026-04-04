@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bwxs17vfh4aha" path="res://Enemies/ballGuy/ballFly.gd" id="4_qvu0d"]
 [ext_resource type="Texture2D" uid="uid://d384diirmaey" path="res://Enemies/ballGuy/F1 w (20260403065557).png" id="6_w83sa"]
 [ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="7_qvu0d"]
+[ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="8_w83sa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w83sa"]
 load_path = "res://.godot/imported/Project (20260331115822).png-67c02ae684ebdd1fc1e494e183c8304d.ctex"
@@ -268,6 +269,9 @@ script = ExtResource("7_qvu0d")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="destroyer" unique_id=270175055]
 position = Vector2(3, 3)
 polygon = PackedVector2Array(-274, -372, 2981, -356, 2981, 1927, -284, 1916, -273, -328, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
+
+[node name="Screamer" parent="." unique_id=249602203 instance=ExtResource("8_w83sa")]
+position = Vector2(561, -484)
 
 [connection signal="area_entered" from="ballFly/dmgArea" to="ballFly" method="_on_dmg_area_area_entered"]
 [connection signal="timeout" from="ball/Timer" to="ball" method="_on_timer_timeout"]

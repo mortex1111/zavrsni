@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b30cbwn606pqr"]
+
+[ext_resource type="Texture2D" uid="uid://cobvthpn07mhx" path="res://Enemies/screamer/screamer_circle.png" id="1_b1cnu"]
+[ext_resource type="Script" uid="uid://dwo2qw78y0lay" path="res://Enemies/screamer/screamer_circle.gd" id="1_eir3l"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eir3l"]
+points = PackedVector2Array(244, -2, 201, 163, 6, 253, 1, 227, 192, 133, 222, -3, 137, -169, -7, -224, -176, -149, -237, 29, -160, 170, -1, 227, 6, 256, -134, 223, -246, 82, -257, -19, -222, -140, -139, -200, -6, -252, 111, -215, 146, -190, 217, -97, 232, -46)
+
+[node name="screamer_circle" type="CharacterBody2D" unique_id=1443312889]
+script = ExtResource("1_eir3l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2108495528]
+position = Vector2(25, 22)
+texture = ExtResource("1_b1cnu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1671664359]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=224498332]
+shape = SubResource("ConvexPolygonShape2D_eir3l")
