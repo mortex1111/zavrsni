@@ -8,7 +8,7 @@ var is_remapping = false
 @export var main_screen: String
 
 @onready var input = preload("res://scenes/input_scene.tscn")
-@onready var input_list: VBoxContainer = $Controls2/PanelContainer/MarginContainer/VBoxContainer
+@onready var input_list: VBoxContainer = $Controls2/MarginContainer/VBoxContainer
 
 var input_actions = {
 	"attack" : "Attack",
@@ -75,3 +75,9 @@ func _on_music_value_changed(value: float) -> void:
 func _on_sfx_value_changed(value: float) -> void:
 	var busindex = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_linear(busindex,value)
+
+func _on_option_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

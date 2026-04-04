@@ -29,8 +29,8 @@ settings/stdout/print_fps=true
 
 [display]
 
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://mrxlhgf58ju"
 mouse_cursor/custom_image_hotspot=Vector2(40, 34)
 
