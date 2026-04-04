@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://v0vfpgu6s26c" path="res://Enemies/ballGuy/F1 Base (20260403065519).png" id="4_d72yr"]
 [ext_resource type="Script" uid="uid://bwxs17vfh4aha" path="res://Enemies/ballGuy/ballFly.gd" id="4_qvu0d"]
 [ext_resource type="Texture2D" uid="uid://d384diirmaey" path="res://Enemies/ballGuy/F1 w (20260403065557).png" id="6_w83sa"]
-[ext_resource type="Texture2D" uid="uid://b42rafvv40kfb" path="res://map1/Project (20260331115822).png" id="8_w83sa"]
+[ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="7_qvu0d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w83sa"]
+load_path = "res://.godot/imported/Project (20260331115822).png-67c02ae684ebdd1fc1e494e183c8304d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(2246.5, 767)
@@ -42,6 +45,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-0.29670596]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 1.4)]
 }
 
 [sub_resource type="Animation" id="Animation_fgtpt"]
@@ -79,12 +94,24 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.23333333),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"boost"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 1.2), Vector2(1.2, 0.9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ysnn6"]
@@ -116,7 +143,7 @@ collision_layer = 128
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1314287724]
 position = Vector2(1080, -370)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_w83sa")
+texture = SubResource("CompressedTexture2D_w83sa")
 
 [node name="map" type="StaticBody2D" parent="Sprite2D" unique_id=2128256402]
 position = Vector2(-1800, 616.6666)
@@ -138,6 +165,7 @@ shape = SubResource("RectangleShape2D_fgtpt")
 
 [node name="ballFly" type="CharacterBody2D" parent="." unique_id=1090376815]
 position = Vector2(681, 109)
+scale = Vector2(0.7, 1.4)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("4_qvu0d")
@@ -149,9 +177,10 @@ shape = SubResource("CircleShape2D_dsqjq")
 position = Vector2(6, -34)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("4_d72yr")
+flip_h = true
 
 [node name="wl" type="Sprite2D" parent="ballFly/Sprite2D" unique_id=115977162]
-position = Vector2(-500, 174.99994)
+position = Vector2(-149.99988, 140.51721)
 rotation = -0.29670596
 texture = ExtResource("6_w83sa")
 flip_h = true
@@ -180,7 +209,7 @@ shape = SubResource("CircleShape2D_dsqjq")
 libraries/ = SubResource("AnimationLibrary_ysnn6")
 
 [node name="ball" type="CharacterBody2D" parent="." unique_id=1254445261]
-position = Vector2(295, 265)
+position = Vector2(-92, 578)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_khc88")
@@ -192,18 +221,27 @@ shape = SubResource("CircleShape2D_dsqjq")
 position = Vector2(6, -34)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("4_d72yr")
+offset = Vector2(-348, 0)
+flip_h = true
 
 [node name="Timer" type="Timer" parent="ball" unique_id=1613919322]
-wait_time = 1.5
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="ball" unique_id=1816100904]
-position = Vector2(0, -16)
-collision_layer = 16
+position = Vector2(-3, -26)
+collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ball/Area2D" unique_id=1998578089]
 position = Vector2(1, 91)
+shape = SubResource("CircleShape2D_khc88")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ball/Area2D" unique_id=1711995875]
+position = Vector2(1, 108)
+shape = SubResource("CircleShape2D_khc88")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ball/Area2D" unique_id=684803843]
+position = Vector2(1, 128)
 shape = SubResource("CircleShape2D_khc88")
 
 [node name="dmgArea" type="Area2D" parent="ball" unique_id=950049564]
@@ -221,6 +259,18 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ball/attack" unique_id=1216143573]
 shape = SubResource("CircleShape2D_dsqjq")
 
+[node name="destroyer" type="Area2D" parent="." unique_id=2030642102]
+position = Vector2(-399, -777)
+collision_layer = 0
+collision_mask = 143
+script = ExtResource("7_qvu0d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="destroyer" unique_id=270175055]
+position = Vector2(3, 3)
+polygon = PackedVector2Array(-274, -372, 2981, -356, 2981, 1927, -284, 1916, -273, -328, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
+
 [connection signal="area_entered" from="ballFly/dmgArea" to="ballFly" method="_on_dmg_area_area_entered"]
 [connection signal="timeout" from="ball/Timer" to="ball" method="_on_timer_timeout"]
 [connection signal="area_entered" from="ball/dmgArea" to="ball" method="_on_dmg_area_area_entered"]
+[connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
+[connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]
