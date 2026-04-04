@@ -19,7 +19,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var dmgCoolLen: float = 0.3
 
 var scX = 0.8
-
+var remeberVel = 0
 var dmgLen: float = 0
 var invizLen: float = 0
 var direction: float = 0
@@ -120,15 +120,11 @@ func move_character(delta: float) -> void:
 		if Input.is_action_just_released("jump") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
 	else:
-		var collision = move_and_collide(velocity * delta)
-		if collision != null:
-			var normal = collision.get_normal()
-			print(normal)
-			velocity = velSave
-			if normal.x != 0:
-				velocity.x *= -1
-			if normal.y != 0:
-				velocity.y *= -1
+		if is_on_wall():
+			print("sw")
+			velocity.x = -1 * remeberVel.x 
+		if is_on_floor() or is_on_ceiling():
+			velocity.y *= -1 * remeberVel.y 
 
 func can_jump() -> bool:
 	if is_on_floor() or coyote_timer > 0:
@@ -226,11 +222,12 @@ func hit_box():
 func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 	if !is_dodging:
 		hanging = false
-		velocity = (global_position - area.global_position).normalized() * 400 * knockVal
+		velocity = (global_position - area.global_position).normalized() * 500 * knockVal
+		remeberVel = velocity
 		HP -= int(area.editor_description)
 		knockVal += 0.25
-		dmgLen = dmgCoolLen * knockVal
-		invizLen = dmgCoolLen * 3 * knockVal
+		dmgLen = dmgCoolLen * knockVal / 2
+		invizLen = dmgCoolLen  * knockVal
 
 
 func _on_attack_area_entered(area: Area2D) -> void:

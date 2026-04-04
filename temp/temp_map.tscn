@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="8_w83sa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w83sa"]
-load_path = "res://.godot/imported/Project (20260331115822).png-67c02ae684ebdd1fc1e494e183c8304d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(2246.5, 767)
@@ -154,6 +153,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1174833452]
 position = Vector2(1078.75, 860)
+shape = SubResource("RectangleShape2D_jei4c")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/map" unique_id=913597138]
+position = Vector2(1044.0001, -1324)
 shape = SubResource("RectangleShape2D_jei4c")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/map" unique_id=636736034]
