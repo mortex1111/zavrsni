@@ -227,7 +227,7 @@ func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 		HP -= int(area.editor_description)
 		knockVal += 0.25
 		dmgLen = dmgCoolLen * knockVal / 2
-		invizLen = dmgCoolLen  * knockVal
+		invizLen = dmgCoolLen  * knockVal * 1.5
 
 
 func _on_attack_area_entered(area: Area2D) -> void:

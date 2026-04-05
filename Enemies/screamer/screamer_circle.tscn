@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dwo2qw78y0lay" path="res://Enemies/screamer/screamer_circle.gd" id="1_eir3l"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eir3l"]
-points = PackedVector2Array(244, -2, 201, 163, 6, 253, 1, 227, 192, 133, 222, -3, 137, -169, -7, -224, -176, -149, -237, 29, -160, 170, -1, 227, 6, 256, -134, 223, -246, 82, -257, -19, -222, -140, -139, -200, -6, -252, 111, -215, 146, -190, 217, -97, 232, -46)
+points = PackedVector2Array(244, -2, 201, 163, 6, 253, 1, 227, 189, 151, 222, -3, 163, -158, -7, -237, -176, -149, -237, 29, -144, 187, -1, 227, 6, 256, -134, 223, -246, 82, -257, -19, -222, -140, -139, -200, -6, -252, 111, -215, 146, -190, 217, -97, 232, -46)
 
 [node name="screamer_circle" type="CharacterBody2D" unique_id=1443312889]
 script = ExtResource("1_eir3l")

@@ -2,282 +2,129 @@
 
 [ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_d72yr"]
 [ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="3_h8bpr"]
-[ext_resource type="Script" uid="uid://6l4gjp5hxrwn" path="res://Enemies/ballGuy/ball.gd" id="3_khc88"]
-[ext_resource type="Texture2D" uid="uid://v0vfpgu6s26c" path="res://Enemies/ballGuy/F1 Base (20260403065519).png" id="4_d72yr"]
-[ext_resource type="Script" uid="uid://bwxs17vfh4aha" path="res://Enemies/ballGuy/ballFly.gd" id="4_qvu0d"]
-[ext_resource type="Texture2D" uid="uid://d384diirmaey" path="res://Enemies/ballGuy/F1 w (20260403065557).png" id="6_w83sa"]
+[ext_resource type="Texture2D" uid="uid://xaam6b0v0aqu" path="res://map1/TV (20260405082553).png" id="3_jei4c"]
+[ext_resource type="PackedScene" uid="uid://siue41kmr436" path="res://Enemies/ballGuy/ball_fly.tscn" id="4_dsqjq"]
+[ext_resource type="PackedScene" uid="uid://bp2vbcvm5h7oq" path="res://Enemies/ballGuy/ball.tscn" id="5_qvu0d"]
 [ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="7_qvu0d"]
-[ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="8_w83sa"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w83sa"]
+[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="7_w83sa"]
+[ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="8_jei4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
-size = Vector2(2246.5, 767)
+size = Vector2(4915.2, 397.8999)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgtpt"]
-size = Vector2(407.25, 1206)
+size = Vector2(407.25, 3624.3003)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dsqjq"]
-radius = 59.008472
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysnn6"]
+size = Vector2(163.39996, 866.2)
 
-[sub_resource type="Animation" id="Animation_jei4c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/wr:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.6457718]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/wl:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.29670596]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.7, 1.4)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rgbs"]
+size = Vector2(504.00015, 145.20001)
 
-[sub_resource type="Animation" id="Animation_fgtpt"]
-resource_name = "fly"
-length = 0.25
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/wr:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.6457718, -0.34906584]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/wl:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.23309568),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.29670596, 0.4712389]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"boost"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.9, 1.2), Vector2(1.2, 0.9)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsaoi"]
+size = Vector2(1085.4001, 149.4)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysnn6"]
-_data = {
-&"RESET": SubResource("Animation_jei4c"),
-&"fly": SubResource("Animation_fgtpt")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ophho"]
+size = Vector2(742.6, 124.80003)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_khc88"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soer2"]
+size = Vector2(533.6, 127.59996)
 
 [node name="Start" type="Node2D" unique_id=1579858107]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1448132368]
+[node name="map" type="StaticBody2D" parent="." unique_id=2128256402]
+position = Vector2(180, -61.666687)
+scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 0
+
+[node name="TextureRect" type="TextureRect" parent="map" unique_id=1448132368]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -663.0
-offset_top = -1137.0
-offset_right = 2566.0
-offset_bottom = 1134.0
+offset_left = -1492.4998
+offset_top = -1330.833
+offset_right = 3299.9998
+offset_bottom = 1776.6665
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_d72yr")
+
+[node name="Sprite2D" type="Sprite2D" parent="map" unique_id=1751715164]
+position = Vector2(1612.8, 142.40002)
+scale = Vector2(2, 2)
+texture = ExtResource("3_jei4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map" unique_id=1174833452]
+position = Vector2(1088.4001, 1808.0001)
+shape = SubResource("RectangleShape2D_jei4c")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="map" unique_id=913597138]
+position = Vector2(829.2001, -1508.5502)
+shape = SubResource("RectangleShape2D_jei4c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="map" unique_id=636736034]
+position = Vector2(-1264.8, 235.70006)
+shape = SubResource("RectangleShape2D_fgtpt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="map" unique_id=1464436297]
+position = Vector2(3068.4001, 21.200027)
+shape = SubResource("RectangleShape2D_fgtpt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map" unique_id=1607067335]
+polygon = PackedVector2Array(-1059.6001, -566.80005, 14.399994, -566.80005, 16.799988, -457.6, -1089.6001, -457.6)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="map" unique_id=396735011]
+polygon = PackedVector2Array(201.59999, -121.599976, 968.4, -123.999985, 969.6001, 15.200027, 201.59999, 15.200027)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="map" unique_id=523971540]
+position = Vector2(1781.9001, -341.1)
+shape = SubResource("RectangleShape2D_ysnn6")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="map" unique_id=830243251]
+position = Vector2(2613.6, -53.799973)
+shape = SubResource("RectangleShape2D_6rgbs")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="map" unique_id=1809280112]
+position = Vector2(1643.7001, 664.1001)
+shape = SubResource("RectangleShape2D_wsaoi")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="map" unique_id=537279290]
+position = Vector2(-62.90001, 888.80005)
+shape = SubResource("RectangleShape2D_ophho")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="map" unique_id=332798163]
+position = Vector2(891.19995, 1306.2)
+shape = SubResource("RectangleShape2D_soer2")
 
 [node name="Player" parent="." unique_id=810777590 instance=ExtResource("3_h8bpr")]
 position = Vector2(1132.9999, 73.99999)
 collision_layer = 128
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1314287724]
-position = Vector2(1080, -370)
-scale = Vector2(0.5, 0.5)
-texture = SubResource("CompressedTexture2D_w83sa")
+[node name="ballFly3" parent="." unique_id=1647457000 instance=ExtResource("4_dsqjq")]
+position = Vector2(418.00012, -400)
 
-[node name="map" type="StaticBody2D" parent="Sprite2D" unique_id=2128256402]
-position = Vector2(-1800, 616.6666)
-scale = Vector2(1.6666666, 1.6666666)
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1174833452]
-position = Vector2(1078.75, 860)
-shape = SubResource("RectangleShape2D_jei4c")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/map" unique_id=913597138]
-position = Vector2(1044.0001, -1324)
-shape = SubResource("RectangleShape2D_jei4c")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/map" unique_id=636736034]
-position = Vector2(-496, -251)
-shape = SubResource("RectangleShape2D_fgtpt")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/map" unique_id=1464436297]
-position = Vector2(2638, -285.99997)
-shape = SubResource("RectangleShape2D_fgtpt")
-
-[node name="ballFly" type="CharacterBody2D" parent="." unique_id=1090376815]
-position = Vector2(681, 109)
-scale = Vector2(0.7, 1.4)
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("4_qvu0d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ballFly" unique_id=32923773]
-shape = SubResource("CircleShape2D_dsqjq")
-
-[node name="Sprite2D" type="Sprite2D" parent="ballFly" unique_id=231147388]
-position = Vector2(6, -34)
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("4_d72yr")
-flip_h = true
-
-[node name="wl" type="Sprite2D" parent="ballFly/Sprite2D" unique_id=115977162]
-position = Vector2(-149.99988, 140.51721)
-rotation = -0.29670596
-texture = ExtResource("6_w83sa")
-flip_h = true
-
-[node name="wr" type="Sprite2D" parent="ballFly/Sprite2D" unique_id=798525902]
-position = Vector2(398.5703, 9.56665)
-rotation = 0.6457718
-texture = ExtResource("6_w83sa")
-
-[node name="dmgArea" type="Area2D" parent="ballFly" unique_id=1536850835]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ballFly/dmgArea" unique_id=697998531]
-shape = SubResource("CircleShape2D_dsqjq")
-
-[node name="attack" type="Area2D" parent="ballFly" unique_id=1761671776]
-editor_description = "1"
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ballFly/attack" unique_id=1000095542]
-shape = SubResource("CircleShape2D_dsqjq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ballFly" unique_id=2113080912]
-libraries/ = SubResource("AnimationLibrary_ysnn6")
-
-[node name="ball" type="CharacterBody2D" parent="." unique_id=1254445261]
+[node name="ball" parent="." unique_id=2092553099 instance=ExtResource("5_qvu0d")]
 position = Vector2(-92, 578)
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("3_khc88")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ball" unique_id=241941963]
-shape = SubResource("CircleShape2D_dsqjq")
-
-[node name="Sprite2D" type="Sprite2D" parent="ball" unique_id=963824662]
-position = Vector2(6, -34)
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("4_d72yr")
-offset = Vector2(-348, 0)
-flip_h = true
-
-[node name="Timer" type="Timer" parent="ball" unique_id=1613919322]
-one_shot = true
-
-[node name="Area2D" type="Area2D" parent="ball" unique_id=1816100904]
-position = Vector2(-3, -26)
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/Area2D" unique_id=1998578089]
-position = Vector2(1, 91)
-shape = SubResource("CircleShape2D_khc88")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ball/Area2D" unique_id=1711995875]
-position = Vector2(1, 108)
-shape = SubResource("CircleShape2D_khc88")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ball/Area2D" unique_id=684803843]
-position = Vector2(1, 128)
-shape = SubResource("CircleShape2D_khc88")
-
-[node name="dmgArea" type="Area2D" parent="ball" unique_id=950049564]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/dmgArea" unique_id=542871964]
-shape = SubResource("CircleShape2D_dsqjq")
-
-[node name="attack" type="Area2D" parent="ball" unique_id=981565942]
-editor_description = "1"
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/attack" unique_id=1216143573]
-shape = SubResource("CircleShape2D_dsqjq")
 
 [node name="destroyer" type="Area2D" parent="." unique_id=2030642102]
 position = Vector2(-399, -777)
 collision_layer = 0
 collision_mask = 143
+monitoring = false
+monitorable = false
 script = ExtResource("7_qvu0d")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="destroyer" unique_id=270175055]
 position = Vector2(3, 3)
+scale = Vector2(10, 10)
 polygon = PackedVector2Array(-274, -372, 2981, -356, 2981, 1927, -284, 1916, -273, -328, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
 
-[node name="Screamer" parent="." unique_id=249602203 instance=ExtResource("8_w83sa")]
-position = Vector2(561, -484)
+[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("7_w83sa")]
+position = Vector2(1366, 570)
 
-[connection signal="area_entered" from="ballFly/dmgArea" to="ballFly" method="_on_dmg_area_area_entered"]
-[connection signal="timeout" from="ball/Timer" to="ball" method="_on_timer_timeout"]
-[connection signal="area_entered" from="ball/dmgArea" to="ball" method="_on_dmg_area_area_entered"]
+[node name="Screamer" parent="." unique_id=770785943 instance=ExtResource("8_jei4c")]
+position = Vector2(87, 254)
+
 [connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
 [connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]

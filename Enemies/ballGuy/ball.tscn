@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bp2vbcvm5h7oq"]
+
+[ext_resource type="Script" uid="uid://6l4gjp5hxrwn" path="res://Enemies/ballGuy/ball.gd" id="1_gofjg"]
+[ext_resource type="Texture2D" uid="uid://v0vfpgu6s26c" path="res://Enemies/ballGuy/F1 Base (20260403065519).png" id="2_ijhya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsqjq"]
+radius = 59.008472
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_khc88"]
+
+[node name="ball" type="CharacterBody2D" unique_id=2092553099]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_gofjg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729815292]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=707432609]
+position = Vector2(6, -34)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_ijhya")
+offset = Vector2(-348, 0)
+flip_h = true
+
+[node name="Timer" type="Timer" parent="." unique_id=886179350]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1062380958]
+position = Vector2(-3, -26)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1775394545]
+position = Vector2(1, 91)
+shape = SubResource("CircleShape2D_khc88")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1582385278]
+position = Vector2(1, 108)
+shape = SubResource("CircleShape2D_khc88")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=1710310750]
+position = Vector2(1, 128)
+shape = SubResource("CircleShape2D_khc88")
+
+[node name="dmgArea" type="Area2D" parent="." unique_id=198442059]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmgArea" unique_id=19294147]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="attack" type="Area2D" parent="." unique_id=77384494]
+editor_description = "1"
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack" unique_id=1845054405]
+shape = SubResource("CircleShape2D_dsqjq")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="dmgArea" to="." method="_on_dmg_area_area_entered"]
