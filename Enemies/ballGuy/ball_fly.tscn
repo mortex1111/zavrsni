@@ -107,6 +107,15 @@ _data = {
 &"fly": SubResource("Animation_fgtpt")
 }
 
+[sub_resource type="Gradient" id="Gradient_w83sa"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tllia"]
+gradient = SubResource("Gradient_w83sa")
+fill = 1
+fill_from = Vector2(0.507326, 0.503663)
+fill_to = Vector2(0.8333333, 0.1959707)
+
 [node name="ballFly" type="CharacterBody2D" unique_id=312764425]
 scale = Vector2(0.7, 1.4)
 collision_layer = 0
@@ -150,5 +159,13 @@ shape = SubResource("CircleShape2D_dsqjq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=691837993]
 libraries/ = SubResource("AnimationLibrary_ysnn6")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1322655564 groups=["enemy"]]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_tllia")
+texture_scale = 7.0
 
 [connection signal="area_entered" from="dmgArea" to="." method="_on_dmg_area_area_entered"]

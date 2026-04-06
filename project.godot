@@ -37,6 +37,7 @@ mouse_cursor/custom_image_hotspot=Vector2(40, 34)
 [global_group]
 
 Scene=""
+enemy=""
 
 [input]
 

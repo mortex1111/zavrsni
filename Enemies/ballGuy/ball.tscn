@@ -8,7 +8,16 @@ radius = 59.008472
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_khc88"]
 
-[node name="ball" type="CharacterBody2D" unique_id=2092553099]
+[sub_resource type="Gradient" id="Gradient_w83sa"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gofjg"]
+gradient = SubResource("Gradient_w83sa")
+fill = 1
+fill_from = Vector2(0.507326, 0.503663)
+fill_to = Vector2(0.8333333, 0.1959707)
+
+[node name="ball" type="CharacterBody2D" unique_id=2092553099 groups=["enemy"]]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_gofjg")
@@ -57,6 +66,14 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack" unique_id=1845054405]
 shape = SubResource("CircleShape2D_dsqjq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1452663517]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_gofjg")
+texture_scale = 7.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="dmgArea" to="." method="_on_dmg_area_area_entered"]

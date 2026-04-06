@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func boost():
-	velocity.y -= randf_range(500, 1100)
+	velocity.y -= randf_range(500, 1300)
 
 func _on_dmg_area_area_entered(area: Area2D) -> void:
 	queue_free()

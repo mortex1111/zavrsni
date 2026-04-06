@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://vkhi7uroy7kk"]
 
 [ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_d72yr"]
+[ext_resource type="Script" uid="uid://b0fuw6t2fvx7x" path="res://map1/map1.gd" id="1_qvu0d"]
 [ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="3_h8bpr"]
 [ext_resource type="Texture2D" uid="uid://xaam6b0v0aqu" path="res://map1/TV (20260405082553).png" id="3_jei4c"]
 [ext_resource type="PackedScene" uid="uid://siue41kmr436" path="res://Enemies/ballGuy/ball_fly.tscn" id="4_dsqjq"]
 [ext_resource type="PackedScene" uid="uid://bp2vbcvm5h7oq" path="res://Enemies/ballGuy/ball.tscn" id="5_qvu0d"]
 [ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="7_qvu0d"]
-[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="7_w83sa"]
-[ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="8_jei4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(4915.2, 397.8999)
@@ -30,11 +29,53 @@ size = Vector2(742.6, 124.80003)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soer2"]
 size = Vector2(533.6, 127.59996)
 
+[sub_resource type="Gradient" id="Gradient_dsqjq"]
+offsets = PackedFloat32Array(0, 0.24093264)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qvu0d"]
+gradient = SubResource("Gradient_dsqjq")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fgtpt"]
+polygon = PackedVector2Array(281, -122, 281, -56, 664, -54, 665, -123)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dsqjq"]
+polygon = PackedVector2Array(281, -122, 281, -56, 664, -54, 665, -123)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qvu0d"]
+polygon = PackedVector2Array(288.33337, -123.3333, 285.83337, -39.166626, 841.6667, -40.833313, 836.6667, -121.666626)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6rgbs"]
+polygon = PackedVector2Array(591.6667, -803.33325, 590.8334, -369.99997, 666.6667, -369.99997, 666.6667, -803.33325)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w83sa"]
+polygon = PackedVector2Array(288.33337, -123.3333, 292.5, -60.833313, 665, -60.833313, 662.5, -120.83331)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ysnn6"]
+polygon = PackedVector2Array(292.50003, -127.5, 293.33337, -65, 557.5, -64.16669, 555.8334, -128.33331)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jei4c"]
+polygon = PackedVector2Array(884, -1292.6666, 882, -1886.6666, -1964, -1914.6666, -2172, 3129.3335, 6444, 3147.3335, 5664, -2400.6665, 874, -1900.6666, 874, -1288.6666, 2844, -1266.6666, 2876, 1619.3334, -1084, 1629.3334, -1084, -1276.6666)
+
+[sub_resource type="Gradient" id="Gradient_qvu0d"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jei4c"]
+gradient = SubResource("Gradient_qvu0d")
+fill = 1
+fill_from = Vector2(0.507326, 0.503663)
+fill_to = Vector2(0.8333333, 0.1959707)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvu0d"]
+size = Vector2(153, 395)
+
 [node name="Start" type="Node2D" unique_id=1579858107]
+script = ExtResource("1_qvu0d")
 
 [node name="map" type="StaticBody2D" parent="." unique_id=2128256402]
 position = Vector2(180, -61.666687)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 collision_layer = 16
 collision_mask = 0
 
@@ -97,15 +138,73 @@ shape = SubResource("RectangleShape2D_ophho")
 position = Vector2(891.19995, 1306.2)
 shape = SubResource("RectangleShape2D_soer2")
 
+[node name="PointLight2D" type="PointLight2D" parent="map" unique_id=798653796]
+position = Vector2(903, 167.33337)
+scale = Vector2(61.21875, 44.8125)
+energy = 0.12
+texture = SubResource("GradientTexture2D_qvu0d")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="map" unique_id=366245546]
+position = Vector2(-360, 123.333374)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_fgtpt")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="map" unique_id=2028095003]
+position = Vector2(1811.6665, 132.7778)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_dsqjq")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="map" unique_id=84135908]
+position = Vector2(519.9999, 831.1111)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_qvu0d")
+
+[node name="LightOccluder2D7" type="LightOccluder2D" parent="map" unique_id=226372450]
+position = Vector2(519.9999, 831.1111)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_6rgbs")
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="map" unique_id=154885028]
+position = Vector2(-1020, 1074.4445)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_w83sa")
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="map" unique_id=1796965534]
+position = Vector2(38.333252, 1499.4445)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_ysnn6")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="map" unique_id=1758916776]
+occluder = SubResource("OccluderPolygon2D_jei4c")
+occluder_light_mask = 3
+
 [node name="Player" parent="." unique_id=810777590 instance=ExtResource("3_h8bpr")]
 position = Vector2(1132.9999, 73.99999)
 collision_layer = 128
 
-[node name="ballFly3" parent="." unique_id=1647457000 instance=ExtResource("4_dsqjq")]
-position = Vector2(418.00012, -400)
+[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=777156450]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jei4c")
+texture_scale = 15.0
 
-[node name="ball" parent="." unique_id=2092553099 instance=ExtResource("5_qvu0d")]
-position = Vector2(-92, 578)
+[node name="PointLight2D2" type="PointLight2D" parent="Player" unique_id=1939472160]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.4
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jei4c")
+texture_scale = 50.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Player" unique_id=369377404]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.25
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jei4c")
+texture_scale = 20.0
 
 [node name="destroyer" type="Area2D" parent="." unique_id=2030642102]
 position = Vector2(-399, -777)
@@ -118,13 +217,40 @@ script = ExtResource("7_qvu0d")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="destroyer" unique_id=270175055]
 position = Vector2(3, 3)
 scale = Vector2(10, 10)
-polygon = PackedVector2Array(-274, -372, 2981, -356, 2981, 1927, -284, 1916, -273, -328, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
+polygon = PackedVector2Array(-274, -372, 437.4, -68.3, 505.69998, 358.59998, -142.59998, 330.19998, -45.899994, -322.09998, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
 
-[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("7_w83sa")]
-position = Vector2(1366, 570)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1801656313]
+light_mask = 2
+visibility_layer = 2
+energy = 0.8
+blend_mode = 1
 
-[node name="Screamer" parent="." unique_id=770785943 instance=ExtResource("8_jei4c")]
-position = Vector2(87, 254)
+[node name="ballFly" parent="." unique_id=312764425 groups=["enemy"] instance=ExtResource("4_dsqjq")]
+position = Vector2(568, 372)
+
+[node name="ball" parent="." unique_id=2092553099 instance=ExtResource("5_qvu0d")]
+position = Vector2(137, 93)
+
+[node name="Dor" type="Area2D" parent="." unique_id=283797750]
+visible = false
+position = Vector2(648, -334)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dor" unique_id=61233288]
+scale = Vector2(0.05, 0.2)
+texture = ExtResource("3_jei4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dor" unique_id=157705719]
+position = Vector2(4.5, -5.5)
+shape = SubResource("RectangleShape2D_qvu0d")
+
+[node name="ball2" parent="." unique_id=1130764709 instance=ExtResource("5_qvu0d")]
+position = Vector2(-71, 783)
+
+[node name="ballFly2" parent="." unique_id=867054215 instance=ExtResource("4_dsqjq")]
+position = Vector2(1490, -547)
+
+[node name="ballFly3" parent="." unique_id=1936991316 instance=ExtResource("4_dsqjq")]
+position = Vector2(0, -609)
 
 [connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
 [connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]

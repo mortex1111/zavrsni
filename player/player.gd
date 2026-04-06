@@ -222,12 +222,12 @@ func hit_box():
 func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 	if !is_dodging:
 		hanging = false
-		velocity = (global_position - area.global_position).normalized() * 500 * knockVal
+		velocity = (global_position - area.global_position).normalized() * 400 * knockVal
 		remeberVel = velocity
 		HP -= int(area.editor_description)
 		knockVal += 0.25
 		dmgLen = dmgCoolLen * knockVal / 2
-		invizLen = dmgCoolLen  * knockVal * 1.5
+		invizLen = dmgCoolLen  * knockVal * 2
 
 
 func _on_attack_area_entered(area: Area2D) -> void:
