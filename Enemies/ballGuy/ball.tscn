@@ -1,10 +1,19 @@
 [gd_scene format=3 uid="uid://bp2vbcvm5h7oq"]
 
 [ext_resource type="Script" uid="uid://6l4gjp5hxrwn" path="res://Enemies/ballGuy/ball.gd" id="1_gofjg"]
+[ext_resource type="Shader" uid="uid://dhrffl82tl7e5" path="res://shaders/4.gdshader" id="2_51bdg"]
 [ext_resource type="Texture2D" uid="uid://v0vfpgu6s26c" path="res://Enemies/ballGuy/F1 Base (20260403065519).png" id="2_ijhya"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dsqjq"]
 radius = 59.008472
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijhya"]
+shader = ExtResource("2_51bdg")
+shader_parameter/strength = 0.0
+shader_parameter/seed = 0.5
+shader_parameter/direction = Vector2(-0.5, 0)
+shader_parameter/mask_vignette_strength = 0.5
+shader_parameter/mask_vignette_center = Vector2(0.5, 0.3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_khc88"]
 
@@ -26,6 +35,7 @@ script = ExtResource("1_gofjg")
 shape = SubResource("CircleShape2D_dsqjq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=707432609]
+material = SubResource("ShaderMaterial_ijhya")
 position = Vector2(6, -34)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("2_ijhya")

@@ -7,9 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://siue41kmr436" path="res://Enemies/ballGuy/ball_fly.tscn" id="4_dsqjq"]
 [ext_resource type="PackedScene" uid="uid://bp2vbcvm5h7oq" path="res://Enemies/ballGuy/ball.tscn" id="5_qvu0d"]
 [ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="7_qvu0d"]
-[ext_resource type="Shader" uid="uid://dofu1apfrgk4h" path="res://temp/testshader.gdshader" id="8_w83sa"]
-[ext_resource type="Shader" uid="uid://behn86t2agc87" path="res://temp/sh2.gdshader" id="9_jei4c"]
+[ext_resource type="Shader" uid="uid://dofu1apfrgk4h" path="res://shaders/testshader.gdshader" id="8_w83sa"]
+[ext_resource type="Shader" uid="uid://t3ju7an0nec3" path="res://shaders/test2.gdshader" id="9_fgtpt"]
 [ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="10_fgtpt"]
+[ext_resource type="Shader" uid="uid://dacux5e8a4sbd" path="res://shaders/fog.gdshader" id="10_ysnn6"]
+[ext_resource type="Shader" uid="uid://dlotl6mqedx8e" path="res://shaders/outline.gdshader" id="11_6rgbs"]
+[ext_resource type="Shader" uid="uid://kw8i102720vk" path="res://shaders/3.gdshader" id="12_wsaoi"]
+[ext_resource type="Shader" uid="uid://dhrffl82tl7e5" path="res://shaders/4.gdshader" id="13_ophho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(4915.2, 397.8999)
@@ -75,9 +79,9 @@ size = Vector2(153, 395)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jei4c"]
 shader = ExtResource("8_w83sa")
-shader_parameter/contrast = 1.5
-shader_parameter/vignette_strength = 1.0
-shader_parameter/grain_strength = 0.04
+shader_parameter/contrast = 1.6
+shader_parameter/vignette_strength = 2.0
+shader_parameter/grain_strength = 0.24800001178
 
 [sub_resource type="Gradient" id="Gradient_fgtpt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -85,12 +89,61 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ysnn6"]
 gradient = SubResource("Gradient_fgtpt")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgtpt"]
-shader = ExtResource("9_jei4c")
-shader_parameter/thickness = 10.0
-shader_parameter/threshold = 0.5
-shader_parameter/softness = 2.0
-shader_parameter/line_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysnn6"]
+shader = ExtResource("9_fgtpt")
+shader_parameter/strength = 0.02000000095
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.25
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rgbs"]
+shader = ExtResource("10_ysnn6")
+shader_parameter/density = 0.5890000279775
+shader_parameter/speed = Vector2(0.02, 0.01)
+
+[sub_resource type="Gradient" id="Gradient_6rgbs"]
+offsets = PackedFloat32Array(0, 0.8464052)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wsaoi"]
+gradient = SubResource("Gradient_6rgbs")
+fill = 1
+fill_from = Vector2(0.5171674, 0.51287556)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsaoi"]
+shader = ExtResource("11_6rgbs")
+shader_parameter/inner_color = Color(0.17211533, 0.1721153, 0.1721153, 1)
+shader_parameter/outer_color = Color(0, 0, 0, 1)
+shader_parameter/inner_threshold = 0.36
+shader_parameter/outer_threshold = 0.1
+shader_parameter/soft_edge = 0.0
+shader_parameter/fire_radius = 0.4
+shader_parameter/noise_texture = SubResource("GradientTexture2D_wsaoi")
+shader_parameter/multiplier = 1.0
+shader_parameter/stretch = Vector2(1, 1)
+shader_parameter/center = Vector2(0.5, 0.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ophho"]
+shader = ExtResource("12_wsaoi")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soer2"]
+shader = ExtResource("13_ophho")
+shader_parameter/strength = 1.0
+shader_parameter/seed = 0.5
+shader_parameter/direction = Vector2(-0.5, 0)
+shader_parameter/mask_vignette_strength = 1.0
+shader_parameter/mask_vignette_center = Vector2(0.5, 0.5)
 
 [node name="Start" type="Node2D" unique_id=1579858107]
 script = ExtResource("1_qvu0d")
@@ -254,10 +307,10 @@ position = Vector2(568, 372)
 position = Vector2(137, 93)
 
 [node name="Dor" type="Area2D" parent="." unique_id=283797750]
-visible = false
 position = Vector2(648, -334)
 
 [node name="Sprite2D" type="Sprite2D" parent="Dor" unique_id=61233288]
+visible = false
 scale = Vector2(0.05, 0.2)
 texture = ExtResource("3_jei4c")
 
@@ -275,15 +328,44 @@ position = Vector2(1490, -547)
 position = Vector2(0, -609)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1486576283]
+visible = false
 material = SubResource("ShaderMaterial_jei4c")
 position = Vector2(731.4999, -3.5)
 scale = Vector2(37.328125, 30.078125)
 texture = SubResource("GradientTexture2D_ysnn6")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1219323222]
-material = SubResource("ShaderMaterial_fgtpt")
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1130069685]
+visible = false
+material = SubResource("ShaderMaterial_ysnn6")
 position = Vector2(731.4999, -3.5)
 scale = Vector2(37.328125, 30.078125)
+texture = SubResource("GradientTexture2D_ysnn6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=869904707]
+visible = false
+material = SubResource("ShaderMaterial_6rgbs")
+position = Vector2(731.4999, -3.5)
+scale = Vector2(37.328125, 30.078125)
+texture = SubResource("GradientTexture2D_ysnn6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1096855049]
+visible = false
+material = SubResource("ShaderMaterial_wsaoi")
+position = Vector2(1556, 650.99994)
+scale = Vector2(5.453127, 5.6406245)
+texture = SubResource("GradientTexture2D_ysnn6")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=445385045]
+visible = false
+material = SubResource("ShaderMaterial_ophho")
+position = Vector2(788.49994, 82.00006)
+scale = Vector2(38.546875, 27.781252)
+texture = SubResource("GradientTexture2D_ysnn6")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1849520551]
+material = SubResource("ShaderMaterial_soer2")
+position = Vector2(788.49994, 82.00006)
+scale = Vector2(38.546875, 27.781252)
 texture = SubResource("GradientTexture2D_ysnn6")
 
 [node name="Screamer" parent="." unique_id=770785943 instance=ExtResource("10_fgtpt")]

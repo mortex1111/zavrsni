@@ -2,9 +2,9 @@ shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
-uniform float contrast : hint_range(0.0, 3.0) = 1.4;
+uniform float contrast : hint_range(0.0, 8.0) = 1.6;
 uniform float vignette_strength : hint_range(0.0, 2.0) = 1.0;
-uniform float grain_strength : hint_range(0.0, 0.2) = 0.04;
+uniform float grain_strength : hint_range(0.0, 0.8) = 2.5;
 
 float random(vec2 uv) {
     return fract(sin(dot(uv, vec2(12.9898,78.233))) * 43758.5453);
