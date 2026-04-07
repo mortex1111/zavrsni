@@ -87,7 +87,10 @@ gradient = SubResource("Gradient_fgtpt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fgtpt"]
 shader = ExtResource("9_jei4c")
-shader_parameter/grain_strength = 0.05
+shader_parameter/thickness = 10.0
+shader_parameter/threshold = 0.5
+shader_parameter/softness = 2.0
+shader_parameter/line_color = Color(0, 0, 0, 1)
 
 [node name="Start" type="Node2D" unique_id=1579858107]
 script = ExtResource("1_qvu0d")
@@ -198,7 +201,7 @@ occluder = SubResource("OccluderPolygon2D_jei4c")
 occluder_light_mask = 3
 
 [node name="Player" parent="." unique_id=810777590 instance=ExtResource("3_h8bpr")]
-position = Vector2(-380.99976, 812.99994)
+position = Vector2(1109.9999, 727)
 collision_layer = 128
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=777156450]
@@ -278,7 +281,6 @@ scale = Vector2(37.328125, 30.078125)
 texture = SubResource("GradientTexture2D_ysnn6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1219323222]
-visible = false
 material = SubResource("ShaderMaterial_fgtpt")
 position = Vector2(731.4999, -3.5)
 scale = Vector2(37.328125, 30.078125)

@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 	animations_test()
 	animations()
 	hit_box()
-	move_and_slide()
 
 func is_hanging():
 	if lgrab.is_colliding() and !hanging and hang_timer1 <= 0.0:
@@ -120,18 +119,13 @@ func move_character(delta: float) -> void:
 			start_jump()
 		if Input.is_action_just_released("jump") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
+		move_and_slide()
 	else:
 		pass
-		if is_on_wall() and !has_bounced:
-			print("sw")
-			velocity.x = -1 * remeberVel.x 
-			has_bounced = true
-		if (is_on_floor() or is_on_ceiling()) and !has_bounced:
-			velocity.y *= -1 * remeberVel.y 
-			has_bounced = true
-		if (is_on_wall() and ! (is_on_floor() or is_on_ceiling())):
-			has_bounced = false
-
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			velocity = velocity.bounce(collision.get_normal())
+			velocity *= 0.9
 func can_jump() -> bool:
 	if is_on_floor() or coyote_timer > 0:
 		return true
