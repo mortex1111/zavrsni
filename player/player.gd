@@ -18,6 +18,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var attack_len: int = 45
 @export var dmgCoolLen: float = 0.3
 
+var has_bounced = false
 var scX = 0.8
 var remeberVel = 0
 var dmgLen: float = 0
@@ -120,11 +121,16 @@ func move_character(delta: float) -> void:
 		if Input.is_action_just_released("jump") and is_jumping and velocity.y < jump_cutoff:
 			velocity.y = jump_cutoff
 	else:
-		if is_on_wall():
+		pass
+		if is_on_wall() and !has_bounced:
 			print("sw")
 			velocity.x = -1 * remeberVel.x 
-		if is_on_floor() or is_on_ceiling():
+			has_bounced = true
+		if (is_on_floor() or is_on_ceiling()) and !has_bounced:
 			velocity.y *= -1 * remeberVel.y 
+			has_bounced = true
+		if (is_on_wall() and ! (is_on_floor() or is_on_ceiling())):
+			has_bounced = false
 
 func can_jump() -> bool:
 	if is_on_floor() or coyote_timer > 0:
