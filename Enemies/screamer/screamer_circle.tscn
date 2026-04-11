@@ -3,9 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cobvthpn07mhx" path="res://Enemies/screamer/screamer_circle.png" id="1_b1cnu"]
 [ext_resource type="Script" uid="uid://dwo2qw78y0lay" path="res://Enemies/screamer/screamer_circle.gd" id="1_eir3l"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eir3l"]
-points = PackedVector2Array(244, -2, 201, 163, 6, 253, 1, 227, 189, 151, 222, -3, 163, -158, -7, -237, -176, -149, -237, 29, -144, 187, -1, 227, 6, 256, -134, 223, -246, 82, -257, -19, -222, -140, -139, -200, -6, -252, 111, -215, 146, -190, 217, -97, 232, -46)
-
 [node name="screamer_circle" type="CharacterBody2D" unique_id=1443312889]
 script = ExtResource("1_eir3l")
 
@@ -17,5 +14,5 @@ texture = ExtResource("1_b1cnu")
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=224498332]
-shape = SubResource("ConvexPolygonShape2D_eir3l")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=342958596]
+polygon = PackedVector2Array(-88, -227, -24, -251, 38, -247, 99, -222, 158, -189, 217, -114, 246, -35, 243, 43, 212, 129, 170, 186, 116, 222, 61, 245, 3, 254, -62, 246, -128, 228, -195, 173, -241, 99, -257, 26, -250, -56, -222, -128, -177, -184, -106, -224, -84, -231, -79, -226, -107, -215, -150, -188, -177, -167, -207, -123, -223, -95, -241, -55, -245, 2, -241, 54, -232, 98, -197, 154, -149, 200, -99, 227, -19, 243, 48, 239, 111, 212, 171, 173, 212, 115, 233, 48, 237, -27, 210, -103, 162, -174, 121, -202, 68, -224, 19, -242, -29, -242)

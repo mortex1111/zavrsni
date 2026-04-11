@@ -116,7 +116,7 @@ fill = 1
 fill_from = Vector2(0.507326, 0.503663)
 fill_to = Vector2(0.8333333, 0.1959707)
 
-[node name="ballFly" type="CharacterBody2D" unique_id=312764425]
+[node name="ballFly" type="CharacterBody2D" unique_id=312764425 groups=["enemy"]]
 scale = Vector2(0.7, 1.4)
 collision_layer = 0
 collision_mask = 16

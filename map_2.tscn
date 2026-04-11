@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://b6k6rhtm0qpcu"]
+
+[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_igs0g"]
+[ext_resource type="Texture2D" uid="uid://d3qpif8r0hvof" path="res://map2/arena1 (20260411104735).png" id="2_frbht"]
+[ext_resource type="Shader" uid="uid://dofu1apfrgk4h" path="res://shaders/testshader.gdshader" id="3_rcsii"]
+[ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="4_s123t"]
+[ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="6_luiv8"]
+[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="7_8hrur"]
+[ext_resource type="PackedScene" uid="uid://8hpxdx4qnrw8" path="res://Enemies/caveman/cave_man.tscn" id="7_s123t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luiv8"]
+size = Vector2(2773, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hrur"]
+size = Vector2(155, 284.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bik57"]
+polygon = PackedVector2Array(870.5, -284.6667, 872.5, -152.16669, 898.5, -152.16669, 898, -294.6667)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6wyyh"]
+polygon = PackedVector2Array(870.5, -284.6667, 873.5, 87.5, 2268, 80.5, 2263.5, -279.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab82m"]
+shader = ExtResource("3_rcsii")
+shader_parameter/contrast = 1.6
+shader_parameter/vignette_strength = 2.0
+shader_parameter/grain_strength = 0.03600000171
+
+[sub_resource type="Gradient" id="Gradient_fgtpt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fioup"]
+gradient = SubResource("Gradient_fgtpt")
+
+[sub_resource type="Gradient" id="Gradient_qvu0d"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_elquc"]
+gradient = SubResource("Gradient_qvu0d")
+fill = 1
+fill_from = Vector2(0.507326, 0.503663)
+fill_to = Vector2(0.8333333, 0.1959707)
+
+[node name="Map2" type="Node2D" unique_id=178305863]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=428487035]
+scale = Vector2(0.7, 0.7)
+collision_layer = 16
+collision_mask = 0
+
+[node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=1611690105]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2341.0
+offset_top = -1359.0
+offset_right = 2451.4995
+offset_bottom = 1748.4995
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_igs0g")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="StaticBody2D/TextureRect" unique_id=344585990]
+light_mask = 2
+visibility_layer = 2
+energy = 0.4
+blend_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=288470100]
+position = Vector2(1.5, 962)
+shape = SubResource("RectangleShape2D_luiv8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1811548585]
+position = Vector2(-1462.4998, 241.74995)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_8hrur")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1979002391]
+position = Vector2(1462.8572, 234.2857)
+shape = SubResource("RectangleShape2D_8hrur")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=387409068]
+position = Vector2(1467.143, -321.4286)
+shape = SubResource("RectangleShape2D_8hrur")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=949521376]
+position = Vector2(-1452.8572, -317.14285)
+shape = SubResource("RectangleShape2D_8hrur")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=462374768]
+texture = ExtResource("2_frbht")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="StaticBody2D" unique_id=405044073]
+position = Vector2(-360, 123.333374)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_bik57")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="StaticBody2D" unique_id=1913356950]
+position = Vector2(-356, 670)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_bik57")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="StaticBody2D" unique_id=866092116]
+position = Vector2(-3185, 683)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_bik57")
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="StaticBody2D" unique_id=1202520577]
+position = Vector2(-3173, 118)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_bik57")
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="StaticBody2D" unique_id=808225717]
+position = Vector2(-3130, 1245)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_6wyyh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D" unique_id=1305921505]
+material = SubResource("ShaderMaterial_ab82m")
+position = Vector2(49.49996, 200.5002)
+scale = Vector2(74.859375, 48.953125)
+texture = SubResource("GradientTexture2D_fioup")
+
+[node name="Player" parent="." unique_id=810777590 instance=ExtResource("4_s123t")]
+position = Vector2(335.00018, 186.00006)
+collision_layer = 128
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=1889801481]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.1
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_elquc")
+texture_scale = 15.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Player" unique_id=775574389]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_elquc")
+texture_scale = 50.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Player" unique_id=1566522317]
+position = Vector2(-16.249878, 11.250008)
+scale = Vector2(1.2499999, 1.2499999)
+energy = 0.15
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_elquc")
+texture_scale = 20.0
+
+[node name="Astronaut" parent="." unique_id=1692940574 instance=ExtResource("6_luiv8")]
+position = Vector2(-677, 58)
+
+[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("7_8hrur")]
+position = Vector2(-552, 289)
+
+[node name="CaveMan" parent="." unique_id=249602203 instance=ExtResource("7_s123t")]
+position = Vector2(-809, 273)
