@@ -11,7 +11,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var jump_cutoff: float = -300.0
 @export var coyote_time: float = 0.15
 @export var jump_buffer_time: float = 0.15
-@export var hang_delay: float = 0.2
+@export var hang_delay: float = 0.5
 @export var air_dodge_duration: float = 0.2
 @export var max_jumps: int = 2
 @export var attack_cool_len: int = 60
@@ -72,8 +72,10 @@ func is_hanging():
 
 func move_character(delta: float) -> void:
 	if dmgLen < 0:
-		if !is_dodging:
+		if !is_dodging and hang_timer2 <= 0.0:
 			direction = Input.get_axis("left", "right")
+		else:
+			direction = 0
 		if hanging:
 			is_dodging = false
 			hang_timer2 -= delta

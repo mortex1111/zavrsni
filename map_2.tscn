@@ -61,6 +61,7 @@ grow_vertical = 2
 texture = ExtResource("1_igs0g")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="StaticBody2D/TextureRect" unique_id=344585990]
+visible = false
 light_mask = 2
 visibility_layer = 2
 energy = 0.4
@@ -111,6 +112,7 @@ scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_bik57")
 
 [node name="LightOccluder2D6" type="LightOccluder2D" parent="StaticBody2D" unique_id=808225717]
+visible = false
 position = Vector2(-3130, 1245)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_6wyyh")
@@ -126,6 +128,7 @@ position = Vector2(335.00018, 186.00006)
 collision_layer = 128
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=1889801481]
+visible = false
 position = Vector2(-16.249878, 11.250008)
 scale = Vector2(1.2499999, 1.2499999)
 energy = 0.1
@@ -134,6 +137,7 @@ texture = SubResource("GradientTexture2D_elquc")
 texture_scale = 15.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player" unique_id=775574389]
+visible = false
 position = Vector2(-16.249878, 11.250008)
 scale = Vector2(1.2499999, 1.2499999)
 energy = 0.2
@@ -142,6 +146,7 @@ texture = SubResource("GradientTexture2D_elquc")
 texture_scale = 50.0
 
 [node name="PointLight2D3" type="PointLight2D" parent="Player" unique_id=1566522317]
+visible = false
 position = Vector2(-16.249878, 11.250008)
 scale = Vector2(1.2499999, 1.2499999)
 energy = 0.15
@@ -150,7 +155,7 @@ texture = SubResource("GradientTexture2D_elquc")
 texture_scale = 20.0
 
 [node name="Astronaut" parent="." unique_id=1692940574 instance=ExtResource("6_luiv8")]
-position = Vector2(-677, 58)
+position = Vector2(-433, -139)
 
 [node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("7_8hrur")]
 position = Vector2(-552, 289)

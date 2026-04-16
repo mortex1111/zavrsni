@@ -13,6 +13,9 @@
 [ext_resource type="Shader" uid="uid://dlotl6mqedx8e" path="res://shaders/outline.gdshader" id="11_6rgbs"]
 [ext_resource type="Shader" uid="uid://kw8i102720vk" path="res://shaders/3.gdshader" id="12_wsaoi"]
 [ext_resource type="Shader" uid="uid://dhrffl82tl7e5" path="res://shaders/4.gdshader" id="13_ophho"]
+[ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="14_7ieth"]
+[ext_resource type="PackedScene" uid="uid://8hpxdx4qnrw8" path="res://Enemies/caveman/cave_man.tscn" id="15_d0dpa"]
+[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="16_h8bpr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(4915.2, 397.8999)
@@ -213,42 +216,50 @@ position = Vector2(891.19995, 1306.2)
 shape = SubResource("RectangleShape2D_soer2")
 
 [node name="PointLight2D" type="PointLight2D" parent="map" unique_id=798653796]
+visible = false
 position = Vector2(903, 167.33337)
 scale = Vector2(61.21875, 44.8125)
 energy = 0.12
 texture = SubResource("GradientTexture2D_qvu0d")
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="map" unique_id=366245546]
+visible = false
 position = Vector2(-360, 123.333374)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_fgtpt")
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="map" unique_id=2028095003]
+visible = false
 position = Vector2(1811.6665, 132.7778)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_dsqjq")
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="map" unique_id=84135908]
+visible = false
 position = Vector2(519.9999, 831.1111)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_qvu0d")
 
 [node name="LightOccluder2D7" type="LightOccluder2D" parent="map" unique_id=226372450]
+visible = false
 position = Vector2(519.9999, 831.1111)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_6rgbs")
 
 [node name="LightOccluder2D5" type="LightOccluder2D" parent="map" unique_id=154885028]
+visible = false
 position = Vector2(-1020, 1074.4445)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_w83sa")
 
 [node name="LightOccluder2D6" type="LightOccluder2D" parent="map" unique_id=1796965534]
+visible = false
 position = Vector2(38.333252, 1499.4445)
 scale = Vector2(2, 2)
 occluder = SubResource("OccluderPolygon2D_ysnn6")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="map" unique_id=1758916776]
+visible = false
 occluder = SubResource("OccluderPolygon2D_jei4c")
 occluder_light_mask = 3
 
@@ -294,16 +305,11 @@ scale = Vector2(10, 10)
 polygon = PackedVector2Array(-274, -372, 437.4, -68.3, 505.69998, 358.59998, -142.59998, 330.19998, -45.899994, -322.09998, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1801656313]
+visible = false
 light_mask = 2
 visibility_layer = 2
 energy = 0.6
 blend_mode = 1
-
-[node name="ballFly" parent="." unique_id=312764425 instance=ExtResource("4_dsqjq")]
-position = Vector2(568, 372)
-
-[node name="ball" parent="." unique_id=2092553099 instance=ExtResource("5_qvu0d")]
-position = Vector2(137, 93)
 
 [node name="Dor" type="Area2D" parent="." unique_id=283797750]
 position = Vector2(648, -334)
@@ -320,6 +326,7 @@ shape = SubResource("RectangleShape2D_qvu0d")
 position = Vector2(-71, 783)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1486576283]
+visible = false
 material = SubResource("ShaderMaterial_jei4c")
 position = Vector2(731.4999, -3.5)
 scale = Vector2(37.328125, 30.078125)
@@ -364,6 +371,15 @@ position = Vector2(1037, -423)
 
 [node name="ballFly3" parent="." unique_id=1904765742 instance=ExtResource("4_dsqjq")]
 position = Vector2(1676, -414)
+
+[node name="Astronaut" parent="." unique_id=1692940574 instance=ExtResource("14_7ieth")]
+position = Vector2(-62, 6)
+
+[node name="CaveMan" parent="." unique_id=249602203 instance=ExtResource("15_d0dpa")]
+position = Vector2(-323, 722)
+
+[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("16_h8bpr")]
+position = Vector2(1004, 152)
 
 [connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
 [connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]

@@ -81,3 +81,7 @@ func _on_option_button_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_back_button_down() -> void:
+	get_parent().switch_scenes(main_screen)

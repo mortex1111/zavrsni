@@ -7,6 +7,15 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_labj1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_labj1"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="settings_menu" type="Control" unique_id=45121485]
 layout_mode = 3
 anchors_preset = 15
@@ -179,7 +188,26 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_icons/icon = SubResource("CanvasTexture_labj1")
 
+[node name="Back" type="Button" parent="." unique_id=1044389117]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.381
+anchor_top = 0.869
+anchor_right = 0.64900005
+anchor_bottom = 0.96300006
+offset_left = 0.08798218
+offset_top = -0.11199951
+offset_right = 0.3519287
+offset_bottom = -0.024047852
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cr101")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_labj1")
+text = "Back"
+
 [connection signal="value_changed" from="MusicAndSounds/Master" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="MusicAndSounds/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="MusicAndSounds/SFX" to="." method="_on_sfx_value_changed"]
 [connection signal="toggled" from="MarginContainer/Hbox/OptionButton" to="." method="_on_option_button_toggled"]
+[connection signal="button_down" from="Back" to="." method="_on_back_button_down"]

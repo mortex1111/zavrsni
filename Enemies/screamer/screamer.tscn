@@ -137,6 +137,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="dmgArea" unique_id=742452052]
+visible = false
 position = Vector2(0.7692334, -1.5384617)
 shape = SubResource("RectangleShape2D_d22c6")
 
@@ -145,6 +146,7 @@ wait_time = 8.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=860103577]
+visible = false
 position = Vector2(2.307693, 5.8687656e-06)
 shape = SubResource("RectangleShape2D_wpqut")
 
