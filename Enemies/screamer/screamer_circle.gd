@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var dmg : float = 0.15
+
 func _ready() -> void:
 	var scale_anim = get_tree().create_tween().tween_property(self,"scale",Vector2(6,6),12.0) 
 	await scale_anim.finished 

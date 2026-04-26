@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var dmg : float = 0.19
 var defS
 var dir = -1
 var speed = 150

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var check = preload("res://Enemies/astronaut/astronaut_check.tscn")
 var projectile = preload("res://Enemies/astronaut/astronaut_projectile.tscn")
+@export var dmg : float = 0.10
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 

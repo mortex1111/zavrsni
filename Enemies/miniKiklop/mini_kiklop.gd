@@ -6,6 +6,8 @@ var tempAttacking = false
 var dir = -1
 var hurting = 0
 
+@export var dmg : float = 0.20
+
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	mode()

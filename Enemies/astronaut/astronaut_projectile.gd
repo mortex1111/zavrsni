@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: int = 400
-
+@export var dmg : float = 0.10
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 

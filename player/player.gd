@@ -46,6 +46,7 @@ var velSave
 var last_dir = -1
 
 func _physics_process(delta: float) -> void:
+	print(knockVal)
 	velSave = velocity
 	is_hanging()
 	timers(delta)
@@ -227,7 +228,7 @@ func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 		velocity = (global_position - area.global_position).normalized() * 400 * knockVal
 		remeberVel = velocity
 		HP -= int(area.editor_description)
-		knockVal += 0.25
+		knockVal += area.get_parent().dmg
 		dmgLen = dmgCoolLen * knockVal / 2
 		invizLen = dmgCoolLen  * knockVal * 2
 

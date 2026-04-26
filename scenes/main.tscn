@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://be538a43hqsdx" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bxo5o41kl33aw" path="res://scenes/start_menu.tscn" id="2_sugp2"]
 [ext_resource type="AudioStream" uid="uid://oh8batgysbv3" path="res://audio/music_TEST.mp3" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cxup2fecd4tss" path="res://temp/icon.svg" id="4_tbgi4"]
+[ext_resource type="FontFile" uid="uid://bubfahpkpj5gx" path="res://thesead/Thesead.ttf" id="5_tefeu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="main" type="Control" unique_id=1752337436]
 layout_mode = 3
@@ -22,3 +27,44 @@ volume_db = -30.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2035744299]
+visible = false
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1138128657]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI" unique_id=1801937126]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023000002
+anchor_top = 0.76500005
+anchor_right = 0.25800002
+anchor_bottom = 0.96300006
+offset_left = 0.5039978
+offset_top = 0.27996826
+offset_right = -0.21600342
+offset_bottom = -0.024047852
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer" unique_id=1656060945]
+layout_mode = 2
+texture = ExtResource("4_tbgi4")
+
+[node name="knockValText" type="Label" parent="CanvasLayer/UI/HBoxContainer" unique_id=990916601]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_tefeu")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbgi4")
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1

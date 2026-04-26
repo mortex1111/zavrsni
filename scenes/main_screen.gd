@@ -29,6 +29,7 @@ func _on_start_button_down() -> void:
 	var hand_anim = get_tree().create_tween().tween_property(hand,"rotation_degrees",hand.rotation_degrees+90,0.1) 
 	self.process_mode = Node.PROCESS_MODE_DISABLED
 	await move_anim.finished
+	get_parent().ui.show()
 	get_parent().switch_scenes(main_level)
 
 
