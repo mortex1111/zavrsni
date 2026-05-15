@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://be538a43hqsdx" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bxo5o41kl33aw" path="res://scenes/start_menu.tscn" id="2_sugp2"]
 [ext_resource type="AudioStream" uid="uid://oh8batgysbv3" path="res://audio/music_TEST.mp3" id="3_sugp2"]
-[ext_resource type="Texture2D" uid="uid://cxup2fecd4tss" path="res://temp/icon.svg" id="4_tbgi4"]
 [ext_resource type="FontFile" uid="uid://bubfahpkpj5gx" path="res://thesead/Thesead.ttf" id="5_tefeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
@@ -51,11 +50,14 @@ offset_top = 0.27996826
 offset_right = -0.21600342
 offset_bottom = -0.024047852
 grow_vertical = 0
-theme_override_constants/separation = 50
+theme_override_constants/separation = 25
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer" unique_id=1656060945]
+[node name="TextureRect" type="Label" parent="CanvasLayer/UI/HBoxContainer" unique_id=1464832529]
 layout_mode = 2
-texture = ExtResource("4_tbgi4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_tefeu")
+theme_override_font_sizes/font_size = 30
+text = "Damage"
 
 [node name="knockValText" type="Label" parent="CanvasLayer/UI/HBoxContainer" unique_id=990916601]
 layout_mode = 2

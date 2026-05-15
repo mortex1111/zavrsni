@@ -23,6 +23,10 @@ config/icon="res://temp/icon.svg"
 
 buses/default_bus_layout="uid://co0mw4vog5yw8"
 
+[autoload]
+
+Global="*uid://fch6s2wjngu1"
+
 [debug]
 
 settings/stdout/print_fps=true

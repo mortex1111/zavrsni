@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dr6e1nwd66x3k"]
+
+[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_fk87l"]
+[ext_resource type="FontFile" uid="uid://bubfahpkpj5gx" path="res://thesead/Thesead.ttf" id="2_s45by"]
+
+[node name="Stats" type="Control" unique_id=855189334]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=701719944]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+texture = ExtResource("1_fk87l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2006243750]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.342
+anchor_top = 0.326
+anchor_right = 0.597
+anchor_bottom = 0.651
+offset_left = 0.015991211
+offset_top = -0.2480011
+offset_right = 0.25598145
+offset_bottom = 0.15197754
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=849233251]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s45by")
+theme_override_font_sizes/font_size = 30
+text = "Damage taken: 540%"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=488076645]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s45by")
+theme_override_font_sizes/font_size = 30
+text = "Enemies defeated: 27"
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=1429025110]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s45by")
+theme_override_font_sizes/font_size = 30
+text = "Total jumps: 50"
+
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=1470935074]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s45by")
+theme_override_font_sizes/font_size = 30
+text = "Total air dodges: 20"
+
+[node name="Stats" type="Label" parent="." unique_id=491629427]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.446
+anchor_right = 0.554
+anchor_bottom = 0.086
+offset_left = 42.208008
+offset_right = -42.208008
+offset_bottom = -32.728
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s45by")
+theme_override_font_sizes/font_size = 50
+text = "Stats"

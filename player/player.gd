@@ -137,6 +137,7 @@ func can_jump() -> bool:
 	return false
 
 func start_jump():
+	Global.total_jumps += 1
 	velocity.x = abs(velocity.x) * direction
 	velocity.y = jump_velocity
 	is_jumping = true
@@ -229,6 +230,7 @@ func _on_dmg_hitbox_area_entered(area: Area2D) -> void:
 		remeberVel = velocity
 		HP -= int(area.editor_description)
 		knockVal += area.get_parent().dmg
+		Global.damage_taken += area.get_parent().dmg
 		dmgLen = dmgCoolLen * knockVal / 2
 		invizLen = dmgCoolLen  * knockVal * 2
 

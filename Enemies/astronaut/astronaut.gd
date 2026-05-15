@@ -73,6 +73,7 @@ func _on_dmg_area_entered(area: Area2D) -> void:
 		can_move = false
 		$AnimatedSprite2D.play("dmg")
 	if HP < 1:
+		Global.enemies_defeated += 1
 		$Blackhole.visible = true
 		var rotate_anim = get_tree().create_tween().tween_property(self,"rotation_degrees",360,0.7)
 		var scale_anim = get_tree().create_tween().tween_property(self,"scale",Vector2(0,0),0.7) 
