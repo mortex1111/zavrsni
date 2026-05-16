@@ -28,6 +28,7 @@ func _on_dmg_area_area_entered(area: Area2D) -> void:
 	HP -= int(area.editor_description)
 	$AnimatedSprite2D.play("death")
 	if HP < 1:
+		Global.kills += 1
 		queue_free()
 
 

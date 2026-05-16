@@ -97,7 +97,7 @@ size = Vector2(134.61539, 290.76926)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0jtq"]
 size = Vector2(137.84616, 294.1346)
 
-[node name="CaveMan" type="CharacterBody2D" unique_id=249602203]
+[node name="CaveMan" type="CharacterBody2D" unique_id=249602203 groups=["enemy"]]
 scale = Vector2(1.3, 1.3)
 script = ExtResource("1_ufx3m")
 

@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://b6k6rhtm0qpcu"]
 
-[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="1_igs0g"]
-[ext_resource type="Texture2D" uid="uid://d3qpif8r0hvof" path="res://map2/arena1 (20260411104735).png" id="2_frbht"]
-[ext_resource type="Shader" uid="uid://dofu1apfrgk4h" path="res://shaders/testshader.gdshader" id="3_rcsii"]
-[ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="4_s123t"]
-[ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="6_luiv8"]
-[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="7_8hrur"]
-[ext_resource type="PackedScene" uid="uid://8hpxdx4qnrw8" path="res://Enemies/caveman/cave_man.tscn" id="7_s123t"]
+[ext_resource type="Script" uid="uid://cqfcmhdsv41if" path="res://map2/map_2.gd" id="1_v4wxp"]
+[ext_resource type="Texture2D" uid="uid://bgqsht5wd5l0u" path="res://temp/background.png" id="2_4lkxk"]
+[ext_resource type="Texture2D" uid="uid://d3qpif8r0hvof" path="res://map2/arena1 (20260411104735).png" id="3_456w8"]
+[ext_resource type="Shader" uid="uid://dofu1apfrgk4h" path="res://shaders/testshader.gdshader" id="4_ja5cl"]
+[ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="5_dpl8n"]
+[ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="6_484b2"]
+[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="7_opb7e"]
+[ext_resource type="PackedScene" uid="uid://8hpxdx4qnrw8" path="res://Enemies/caveman/cave_man.tscn" id="8_erder"]
+[ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="9_doxb4"]
+[ext_resource type="Texture2D" uid="uid://xaam6b0v0aqu" path="res://map1/TV (20260405082553).png" id="10_msvkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_luiv8"]
 size = Vector2(2773, 560)
@@ -21,7 +24,7 @@ polygon = PackedVector2Array(870.5, -284.6667, 872.5, -152.16669, 898.5, -152.16
 polygon = PackedVector2Array(870.5, -284.6667, 873.5, 87.5, 2268, 80.5, 2263.5, -279.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ab82m"]
-shader = ExtResource("3_rcsii")
+shader = ExtResource("4_ja5cl")
 shader_parameter/contrast = 1.6
 shader_parameter/vignette_strength = 2.0
 shader_parameter/grain_strength = 0.03600000171
@@ -41,7 +44,11 @@ fill = 1
 fill_from = Vector2(0.507326, 0.503663)
 fill_to = Vector2(0.8333333, 0.1959707)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wyyh"]
+size = Vector2(153, 395)
+
 [node name="Map2" type="Node2D" unique_id=178305863]
+script = ExtResource("1_v4wxp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=428487035]
 scale = Vector2(0.7, 0.7)
@@ -58,7 +65,8 @@ offset_right = 2451.4995
 offset_bottom = 1748.4995
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_igs0g")
+texture = ExtResource("2_4lkxk")
+metadata/_edit_use_anchors_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="StaticBody2D/TextureRect" unique_id=344585990]
 visible = false
@@ -89,7 +97,7 @@ position = Vector2(-1452.8572, -317.14285)
 shape = SubResource("RectangleShape2D_8hrur")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=462374768]
-texture = ExtResource("2_frbht")
+texture = ExtResource("3_456w8")
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="StaticBody2D" unique_id=405044073]
 position = Vector2(-360, 123.333374)
@@ -123,7 +131,7 @@ position = Vector2(49.49996, 200.5002)
 scale = Vector2(74.859375, 48.953125)
 texture = SubResource("GradientTexture2D_fioup")
 
-[node name="Player" parent="." unique_id=810777590 instance=ExtResource("4_s123t")]
+[node name="Player" parent="." unique_id=810777590 instance=ExtResource("5_dpl8n")]
 position = Vector2(335.00018, 186.00006)
 collision_layer = 128
 
@@ -154,11 +162,44 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_elquc")
 texture_scale = 20.0
 
-[node name="Astronaut" parent="." unique_id=1692940574 instance=ExtResource("6_luiv8")]
+[node name="Astronaut" parent="." unique_id=1692940574 instance=ExtResource("6_484b2")]
 position = Vector2(-433, -139)
 
-[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("7_8hrur")]
+[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("7_opb7e")]
 position = Vector2(-552, 289)
 
-[node name="CaveMan" parent="." unique_id=249602203 instance=ExtResource("7_s123t")]
+[node name="CaveMan" parent="." unique_id=249602203 instance=ExtResource("8_erder")]
 position = Vector2(-809, 273)
+
+[node name="destroyer" type="Area2D" parent="." unique_id=2047773441]
+position = Vector2(-1296.3, -765.89996)
+scale = Vector2(0.7, 0.7)
+collision_layer = 0
+collision_mask = 143
+monitorable = false
+script = ExtResource("9_doxb4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="destroyer" unique_id=298347507]
+position = Vector2(3, 3)
+scale = Vector2(10, 10)
+polygon = PackedVector2Array(-48.97142, -29.314278, 431.88568, -30.171425, 431.88568, 287.11426, -50.257126, 285.82855, -50.97142, -39.6, -750, -294, -750, 2307, 3625, 2442, 3473, -1003, -497, -987, -806, -508)
+
+[node name="Dor" type="Area2D" parent="." unique_id=1281937824]
+visible = false
+position = Vector2(-3, 282)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Dor" unique_id=13287480]
+scale = Vector2(0.05, 0.2)
+texture = ExtResource("10_msvkt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dor" unique_id=1297729917]
+position = Vector2(4.5, -5.5)
+shape = SubResource("RectangleShape2D_6wyyh")
+
+[connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
+[connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]
+[connection signal="area_entered" from="Dor" to="." method="_on_dor_area_entered"]

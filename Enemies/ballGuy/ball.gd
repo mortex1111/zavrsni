@@ -45,4 +45,5 @@ func _on_timer_timeout() -> void:
 
 
 func _on_dmg_area_area_entered(area: Area2D) -> void:
+	Global.kills += 1
 	queue_free()

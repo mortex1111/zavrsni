@@ -46,7 +46,6 @@ var velSave
 var last_dir = -1
 
 func _physics_process(delta: float) -> void:
-	print(knockVal)
 	velSave = velocity
 	is_hanging()
 	timers(delta)

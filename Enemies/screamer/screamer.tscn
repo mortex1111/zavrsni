@@ -121,7 +121,7 @@ size = Vector2(269.23077, 340.00003)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqut"]
 size = Vector2(258.46155, 327.69232)
 
-[node name="Screamer" type="CharacterBody2D" unique_id=770785943]
+[node name="Screamer" type="CharacterBody2D" unique_id=770785943 groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 16

@@ -78,6 +78,7 @@ func _on_dmg_area_entered(area: Area2D) -> void:
 		var rotate_anim = get_tree().create_tween().tween_property(self,"rotation_degrees",360,0.7)
 		var scale_anim = get_tree().create_tween().tween_property(self,"scale",Vector2(0,0),0.7) 
 		await scale_anim.finished 
+		Global.kills += 1
 		queue_free()
 
 func _on_animated_sprite_2d_animation_finished() -> void:

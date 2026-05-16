@@ -38,12 +38,12 @@ size = Vector2(742.6, 124.80003)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soer2"]
 size = Vector2(533.6, 127.59996)
 
-[sub_resource type="Gradient" id="Gradient_dsqjq"]
+[sub_resource type="Gradient" id="Gradient_7ieth"]
 offsets = PackedFloat32Array(0, 0.24093264)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qvu0d"]
-gradient = SubResource("Gradient_dsqjq")
+gradient = SubResource("Gradient_7ieth")
 fill_from = Vector2(0, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fgtpt"]
@@ -67,11 +67,11 @@ polygon = PackedVector2Array(292.50003, -127.5, 293.33337, -65, 557.5, -64.16669
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jei4c"]
 polygon = PackedVector2Array(884, -1292.6666, 882, -1886.6666, -1964, -1914.6666, -2172, 3129.3335, 6444, 3147.3335, 5664, -2400.6665, 874, -1900.6666, 874, -1288.6666, 2844, -1266.6666, 2876, 1619.3334, -1084, 1629.3334, -1084, -1276.6666)
 
-[sub_resource type="Gradient" id="Gradient_qvu0d"]
+[sub_resource type="Gradient" id="Gradient_d0dpa"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jei4c"]
-gradient = SubResource("Gradient_qvu0d")
+gradient = SubResource("Gradient_d0dpa")
 fill = 1
 fill_from = Vector2(0.507326, 0.503663)
 fill_to = Vector2(0.8333333, 0.1959707)
@@ -312,7 +312,12 @@ energy = 0.6
 blend_mode = 1
 
 [node name="Dor" type="Area2D" parent="." unique_id=283797750]
+visible = false
 position = Vector2(648, -334)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Dor" unique_id=61233288]
 scale = Vector2(0.05, 0.2)
@@ -383,3 +388,4 @@ position = Vector2(1004, 152)
 
 [connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
 [connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]
+[connection signal="area_entered" from="Dor" to="." method="_on_dor_area_entered"]

@@ -7,6 +7,7 @@
 radius = 66.068146
 
 [node name="rock" type="CharacterBody2D" unique_id=101656328]
+scale = Vector2(0.7, 0.7)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_holr8")

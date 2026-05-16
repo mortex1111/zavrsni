@@ -92,4 +92,5 @@ func _on_dmg_area_area_entered(area: Area2D) -> void:
 	$AnimatedSprite2D.play("dmg")
 	hurting = 2
 	if HP < 1:
+		Global.kills += 1
 		queue_free()

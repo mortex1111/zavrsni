@@ -33,4 +33,5 @@ func boost():
 	velocity.y -= randf_range(500, 1300)
 
 func _on_dmg_area_area_entered(area: Area2D) -> void:
+	Global.kills += 1
 	queue_free()

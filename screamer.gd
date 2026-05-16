@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var HP = 4
+var HP = 3
 var projectile = preload("res://Enemies/screamer/screamer_circle.tscn")
 
 func _ready() -> void:
@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 func _on_dmg_area_area_entered(area: Area2D) -> void:
 	HP -= int(area.editor_description)
 	if HP < 1:
+		Global.kills += 1
 		queue_free()
 
 func _on_timer_timeout() -> void:

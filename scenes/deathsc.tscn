@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://doqvfm8kdcrmc"]
+
+[ext_resource type="Script" uid="uid://d1xorq0qgy6fr" path="res://scenes/deathsc.gd" id="1_feky8"]
+
+[node name="Deathsc" type="Node2D" unique_id=558494995]
+script = ExtResource("1_feky8")
+
+[node name="Label" type="Label" parent="." unique_id=1151566245]
+offset_right = 627.0
+offset_bottom = 234.0

@@ -8,4 +8,4 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_dor_area_entered(area: Area2D) -> void:
-	get_tree().change_scene_to_file("res://map2/map_2.tscn")
+	get_tree().change_scene_to_file("res://map3/map_3.tscn")

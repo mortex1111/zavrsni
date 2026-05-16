@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cckxdhc5k7jaj"]
 
-[ext_resource type="Script" uid="uid://bf7gd2rlil42o" path="res://temp/mini_kiklop.gd" id="1_8l7om"]
+[ext_resource type="Script" uid="uid://bf7gd2rlil42o" path="res://Enemies/miniKiklop/mini_kiklop.gd" id="1_8l7om"]
 [ext_resource type="Texture2D" uid="uid://7yhbe4s6cl67" path="res://Enemies/miniKiklop/attack (20251228091842).png" id="2_m2xn3"]
 [ext_resource type="Texture2D" uid="uid://u3i32j68w1tq" path="res://Enemies/miniKiklop/Project (20251228092735).png" id="3_yp2e1"]
 [ext_resource type="Texture2D" uid="uid://bssrjy6m6rav2" path="res://Enemies/miniKiklop/Project (20251230083028).png" id="4_lflqo"]
@@ -215,7 +215,7 @@ size = Vector2(161.875, 115)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0jtq"]
 size = Vector2(118, 281.5)
 
-[node name="miniKiklop" type="CharacterBody2D" unique_id=936336277]
+[node name="miniKiklop" type="CharacterBody2D" unique_id=936336277 groups=["enemy"]]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_8l7om")
