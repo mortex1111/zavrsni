@@ -4,18 +4,14 @@
 [ext_resource type="Script" uid="uid://b0fuw6t2fvx7x" path="res://map1/map1.gd" id="1_qvu0d"]
 [ext_resource type="PackedScene" uid="uid://bn1o3txh2pdk7" path="res://scenes/player.tscn" id="3_h8bpr"]
 [ext_resource type="Texture2D" uid="uid://xaam6b0v0aqu" path="res://map1/TV (20260405082553).png" id="3_jei4c"]
-[ext_resource type="PackedScene" uid="uid://siue41kmr436" path="res://Enemies/ballGuy/ball_fly.tscn" id="4_dsqjq"]
-[ext_resource type="PackedScene" uid="uid://bp2vbcvm5h7oq" path="res://Enemies/ballGuy/ball.tscn" id="5_qvu0d"]
 [ext_resource type="Script" uid="uid://d2xa7upsj0l6g" path="res://map1/destroyer.gd" id="7_qvu0d"]
 [ext_resource type="Shader" uid="uid://dofu1apfrgk4h" path="res://shaders/testshader.gdshader" id="8_w83sa"]
 [ext_resource type="Shader" uid="uid://t3ju7an0nec3" path="res://shaders/test2.gdshader" id="9_fgtpt"]
 [ext_resource type="Shader" uid="uid://dacux5e8a4sbd" path="res://shaders/fog.gdshader" id="10_ysnn6"]
 [ext_resource type="Shader" uid="uid://dlotl6mqedx8e" path="res://shaders/outline.gdshader" id="11_6rgbs"]
+[ext_resource type="PackedScene" uid="uid://dyr5gmw88ys0q" path="res://Enemies/screamer/screamer.tscn" id="12_6rgbs"]
 [ext_resource type="Shader" uid="uid://kw8i102720vk" path="res://shaders/3.gdshader" id="12_wsaoi"]
 [ext_resource type="Shader" uid="uid://dhrffl82tl7e5" path="res://shaders/4.gdshader" id="13_ophho"]
-[ext_resource type="PackedScene" uid="uid://df7elar4sb17f" path="res://Enemies/astronaut/astronaut.tscn" id="14_7ieth"]
-[ext_resource type="PackedScene" uid="uid://8hpxdx4qnrw8" path="res://Enemies/caveman/cave_man.tscn" id="15_d0dpa"]
-[ext_resource type="PackedScene" uid="uid://cckxdhc5k7jaj" path="res://Enemies/miniKiklop/mini_kiklop.tscn" id="16_h8bpr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jei4c"]
 size = Vector2(4915.2, 397.8999)
@@ -327,9 +323,6 @@ texture = ExtResource("3_jei4c")
 position = Vector2(4.5, -5.5)
 shape = SubResource("RectangleShape2D_qvu0d")
 
-[node name="ball2" parent="." unique_id=1130764709 instance=ExtResource("5_qvu0d")]
-position = Vector2(-71, 783)
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1486576283]
 visible = false
 material = SubResource("ShaderMaterial_jei4c")
@@ -371,20 +364,8 @@ position = Vector2(788.49994, 82.00006)
 scale = Vector2(38.546875, 27.781252)
 texture = SubResource("GradientTexture2D_ysnn6")
 
-[node name="ballFly2" parent="." unique_id=1867313511 instance=ExtResource("4_dsqjq")]
-position = Vector2(1037, -423)
-
-[node name="ballFly3" parent="." unique_id=1904765742 instance=ExtResource("4_dsqjq")]
-position = Vector2(1676, -414)
-
-[node name="Astronaut" parent="." unique_id=1692940574 instance=ExtResource("14_7ieth")]
-position = Vector2(-62, 6)
-
-[node name="CaveMan" parent="." unique_id=249602203 instance=ExtResource("15_d0dpa")]
-position = Vector2(-323, 722)
-
-[node name="miniKiklop" parent="." unique_id=936336277 instance=ExtResource("16_h8bpr")]
-position = Vector2(1004, 152)
+[node name="Screamer" parent="." unique_id=770785943 instance=ExtResource("12_6rgbs")]
+position = Vector2(130, 355)
 
 [connection signal="area_entered" from="destroyer" to="destroyer" method="_on_area_entered"]
 [connection signal="body_entered" from="destroyer" to="destroyer" method="_on_body_entered"]
